@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class EncuestaConfig(AppConfig):
     name = 'encuesta'
+    icon = '<i class="material-icons">content_paste</i>'
