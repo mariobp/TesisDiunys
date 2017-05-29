@@ -43,12 +43,24 @@ class Diligenciador(User):
 class Egresado(Diligenciador):
     fecha_ingreso = models.DateField()
     fecha_egreso = models.DateField()
+    graduado = models.BooleanField()
 
     class Meta:
         verbose_name = "Egresado"
         verbose_name_plural = "Egresados"
     # end class
 # end class
+
+
+class GrupoPeriodo(models.Model):
+    nombre = models.CharField(max_length=200)
+    egresados = models.ManyToManyField(Egresado)
+    fecha = models.DateField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Grupo de egresados"
+        verbose_name_plural = "Grupos de Egresados"
+    # end class
 # end class
 
 

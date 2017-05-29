@@ -17,7 +17,7 @@ class Pregunta(models.Model):
     # end class
 
     def __unicode__(self):
-        return u'%s %s' % (self.cuestionario, self.enunciado)
+        return u'%s' % (self.enunciado)
     # end def
 # end class
 
@@ -62,6 +62,16 @@ class Instrumento(models.Model):
         verbose_name = "Instrumento"
         verbose_name_plural = "Instrumentos"
     # end class
+
+    def descargar_datos(self):
+        return "<a>Datos</a>"
+    # end def
+
+    def estadisticas(self):
+        return "Graficos"
+    # end def
+
+    descargar_datos.allow_tags = True
 
     def __unicode__(self):
         return unicode(self.nombre)

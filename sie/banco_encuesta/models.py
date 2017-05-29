@@ -23,6 +23,19 @@ class FormularioD(models.Model):
 # end class
 
 
+class AsignarEncuesta(models.Model):
+    instrumento = models.ForeignKey(encuesta.Instrumento)
+    diligenciadores = models.ManyToManyField(usuarios.Diligenciador)
+    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
+    fecha = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Asignación de Encuesta"
+        verbose_name_plural = "Asignaciones de Encuesta"
+    # end class
+# end class
+
+
 class Respuesta(models.Model):
     encuesta = models.ForeignKey(FormularioD)
 

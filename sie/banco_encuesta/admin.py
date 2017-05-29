@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from models import FormularioD, Cerrada, Otros
+from models import FormularioD, Cerrada, Otros, AsignarEncuesta
 # Register your models here.
 
 
@@ -24,3 +24,10 @@ class FormularioDAdmin(admin.ModelAdmin):
     inlines = [CerradaStack, OtrosStack]
     icon = '<i class="material-icons">assignment</i>'
 # end class
+
+
+@admin.register(AsignarEncuesta)
+class AsignacionAdmin(admin.ModelAdmin):
+    list_display = ('instrumento', 'fecha')
+    filter_horizontal = ('diligenciadores',)
+    icon = '<i class="material-icons">assignment_turned_in</i>'
