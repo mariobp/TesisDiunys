@@ -25,13 +25,13 @@ SECRET_KEY = 'pv+kbd4xj+f%0wc1!)a4c6de#=9^2_b9mzj*razak)xrolth@-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'material.theme.blue',
+    'material.theme.lightblue',
     'material',
     'material.admin',
     'django.contrib.admin',
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios.apps.UsuariosConfig',
     'encuesta.apps.EncuestaConfig',
-    'banco_encuesta'
+    'banco_encuesta.apps.BancoEncuestaConfig',
+    
 ]
 
 MIDDLEWARE = [
