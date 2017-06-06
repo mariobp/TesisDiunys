@@ -23,9 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^dashboard/', admin.site.urls),
     url(r'^usuarios/', include('usuarios.urls')),
-    url(r'^interfaz/', include('interfaz.urls', namespace="interfaz")),
-    url(r'', include(frontend_urls, namespace="frontend_urls")),
-    url(r'^$', generic.TemplateView.as_view(template_name="frontend/index.html"), name="index"),
+    url(r'', include('interfaz.urls', namespace="interfaz")),
 ]
 
 if settings.DEBUG:

@@ -24,10 +24,20 @@
           <ul class="right hide-on-med-and-down">
             <li><a href="#">Encuestas</a></li>
             <li><a href="#">Perfil</a></li>
+            {%  if  user.is_authenticated and user.is_superuser %}
+            <li>
+              <a href="/dashboard/">Administración</a>
+            </li>
+            {% endif %}
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="#">Encuestas</a></li>
             <li><a href="#">Perfil</a></li>
+            {% if  user.is_authenticated and user.is_superuser %}
+            <li>
+              <a href="/dashboard/">Administración</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
