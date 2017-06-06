@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'material.theme.lightblue',
     'material',
+    'material.frontend',
     'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +44,8 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'encuesta.apps.EncuestaConfig',
     'banco_encuesta.apps.BancoEncuestaConfig',
-    
+    'interfaz.apps.InterfazConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/media/'

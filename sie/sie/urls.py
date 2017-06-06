@@ -15,8 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import generic
+from material.frontend import urls as frontend_urls
+import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^dashboard/', admin.site.urls),
     url(r'^usuarios/', include('usuarios.urls')),
+    url(r'^interfaz/', include('interfaz.urls', namespace="interfaz")),
+    url(r'', include(frontend_urls, namespace="frontend_urls")),
+    url(r'^$', generic.TemplateView.as_view(template_name="frontend/index.html"), name="index"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
