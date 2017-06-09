@@ -7,8 +7,22 @@ from encuesta import models as encuesta
 # Create your models here.
 
 
+class AsignarEncuesta(models.Model):
+    instrumento = models.ForeignKey(encuesta.Instrumento)
+    diligenciadores = models.ManyToManyField(usuarios.Diligenciador)
+    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
+    fecha = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Asignación de Encuesta"
+        verbose_name_plural = "Asignaciones de Encuesta"
+    # end class
+# end class
+
+
 class FormularioD(models.Model):
     instrumento = models.ForeignKey(encuesta.Instrumento)
+    asignacion = models.ForeignKey(AsignarEncuesta)
     diligenciador = models.ForeignKey(usuarios.Diligenciador)
     fecha = models.DateTimeField(auto_now_add=True)
 
@@ -20,19 +34,6 @@ class FormularioD(models.Model):
     def __unicode__(self):
         return u'%s' % (self.instrumento)
     # end def
-# end class
-
-
-class AsignarEncuesta(models.Model):
-    instrumento = models.ForeignKey(encuesta.Instrumento)
-    diligenciadores = models.ManyToManyField(usuarios.Diligenciador)
-    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
-    fecha = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Asignación de Encuesta"
-        verbose_name_plural = "Asignaciones de Encuesta"
-    # end class
 # end class
 
 

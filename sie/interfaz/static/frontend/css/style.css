@@ -7,3 +7,11 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+#sidenav-overlay{
+  z-index: 995 !important;
+}
+
+.side-nav li>a {
+  padding: 0 32px !important;
+}
