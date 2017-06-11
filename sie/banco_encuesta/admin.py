@@ -18,9 +18,9 @@ class CerradaStack(admin.StackedInline):
 
 @admin.register(FormularioD)
 class FormularioDAdmin(admin.ModelAdmin):
-    list_display = ('diligenciador', 'instrumento', 'fecha')
+    list_display = ('diligenciador', 'asignacion', 'fecha')
     list_filter = list_display
-    search_fields = ('instrumento__nombre', 'diligenciador__first_name', 'diligenciador__last_name', 'diligenciador__identificacion')
+    search_fields = ('asignacion__instrumento__nombre', 'diligenciador__first_name', 'diligenciador__last_name', 'diligenciador__identificacion')
     inlines = [CerradaStack, OtrosStack]
     icon = '<i class="material-icons">assignment</i>'
 # end class

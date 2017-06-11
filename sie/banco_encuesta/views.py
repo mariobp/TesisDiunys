@@ -4,6 +4,8 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from supra import views as supra
 import models
+import forms
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -40,5 +42,30 @@ class AsignacionesList(supra.SupraListView):
                 queryset = queryset.order_by(propiedad)
         # end if
         return queryset
+    # end def
+# end class
+
+
+class RespuestaInline(supra.SupraInlineFormView):
+    model = models.Cerrada
+    base_model = models.FormularioD
+# end class
+
+
+class OtrosInline(supra.SupraInlineFormView):
+    model = models.Otros
+    base_model = models.Otros
+# end class
+
+
+class FormularioDSupraForm(supra.SupraFormView):
+    model = models.FormularioD
+    form_class = forms.FormularioDForm
+    inlines = [RespuestaInline, OtrosInline]
+    template_name = "banco_encuesta/form.html"
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(FormularioDSupraForm, self).dispatch(request, *args, **kwargs)
     # end def
 # end class

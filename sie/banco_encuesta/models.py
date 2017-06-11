@@ -17,11 +17,13 @@ class AsignarEncuesta(models.Model):
         verbose_name = "Asignación de Encuesta"
         verbose_name_plural = "Asignaciones de Encuesta"
     # end class
+
+    def __unicode__(self):
+        return u"%s %s" % (self.instrumento.nombre, self.fecha.strftime("%Y-%m-%d"))
 # end class
 
 
 class FormularioD(models.Model):
-    instrumento = models.ForeignKey(encuesta.Instrumento)
     asignacion = models.ForeignKey(AsignarEncuesta)
     diligenciador = models.ForeignKey(usuarios.Diligenciador)
     fecha = models.DateTimeField(auto_now_add=True)
