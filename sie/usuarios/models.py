@@ -57,6 +57,10 @@ class GrupoPeriodo(models.Model):
     egresados = models.ManyToManyField(Egresado)
     fecha = models.DateField(auto_now=True)
 
+    def __unicode__(self):
+        return u"%s" % (self.nombre, )
+    # end def
+
     class Meta:
         verbose_name = "Grupo de egresados"
         verbose_name_plural = "Grupos de Egresados"

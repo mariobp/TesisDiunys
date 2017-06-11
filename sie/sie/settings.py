@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'encuesta.apps.EncuestaConfig',
     'banco_encuesta.apps.BancoEncuestaConfig',
-    'interfaz.apps.InterfazConfig'
+    'interfaz.apps.InterfazConfig',
+    'cuser'
 
 ]
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cuser.middleware.CuserMiddleware',
 ]
 
 ROOT_URLCONF = 'sie.urls'
