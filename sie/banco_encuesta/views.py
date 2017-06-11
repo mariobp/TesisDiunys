@@ -7,6 +7,7 @@ import models
 import forms
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+supra.SupraConf.body = True
 
 
 class AsignacionesList(supra.SupraListView):
@@ -63,7 +64,7 @@ class FormularioDSupraForm(supra.SupraFormView):
     form_class = forms.FormularioDForm
     inlines = [RespuestaInline, OtrosInline]
     template_name = "banco_encuesta/form.html"
-    
+
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super(FormularioDSupraForm, self).dispatch(request, *args, **kwargs)

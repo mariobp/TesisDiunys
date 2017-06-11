@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^dashboard/', admin.site.urls),
     url(r'^usuarios/', include('usuarios.urls')),
     url(r'^banco/', include('banco_encuesta.urls')),
+    url(r'^encuesta/', include('encuesta.urls')),
     url(r'', include('interfaz.urls', namespace="interfaz")),
 ]
 
