@@ -8,22 +8,13 @@ from supra import views as supra
 from django.contrib.auth import login, logout, authenticate
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
-@login_required(login_url="/dashboard/login/")
+@login_required(login_url="/usuarios/login/")
 def index(request):
     encuestas = models.Instrumento.objects.all()
     return render(request, 'frontend/index.html', {"encuestas": encuestas})
 # end def
-
-
-class LoginU(supra.SupraSession):
-
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        a = super(LoginU, self).dispatch(request, *args, **kwargs)
-        return a
-    # end def
-# end class
