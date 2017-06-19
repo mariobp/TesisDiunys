@@ -41,6 +41,16 @@
     </div>
   </div>
 </div>
+<div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Terminos</h4>
+      <p>[[mensajeConfirmacion]]</p>
+    </div>
+  <div class="modal-footer">
+    <a ng-click="acepto()" class="modal-action modal-close waves-effect waves-green btn-flat">Acepto</a>
+    <a ng-click="closeModal()" class="modal-action modal-close waves-effect waves-green btn-flat">No estoy deacuerdo</a>
+  </div>
+</div>
 <div class="row" ng-show="!ready">
   <div class="col s12">
     <div class="breadcrumb">
@@ -55,7 +65,7 @@
         <br>
         <p>[[asignacion.date ]]</p>
       </div>
-      <div class="card-action">
+      <div class="card-action" ng-show="terminos == '1'">
         <a href="#!/encuesta/[[asignacion.id_ins]]/[[asignacion.id]]">Realizar encuesta</a>
       </div>
     </div>

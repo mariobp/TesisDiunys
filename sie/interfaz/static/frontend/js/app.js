@@ -21,9 +21,48 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
   		});
     });
 
-    app.controller('HomeController', function ($scope, $http) {
+    app.controller('HomeController', function ($scope, $http, $window) {
+
+        $scope.terminos = $window.sessionStorage.getItem('terminos');
+        $scope.mensajeConfirmacion = 'En forma voluntaria expreso mi entendimiento sobre el objetivo del presente instrumento de recolección de información, la cual será usada con fines académicos e investigativos por medio del trabajo de grado “Herramienta informática para apoyar los medios de participación del egresado del Programa de Ingeniería de Sistemas de la Universidad de Cartagena”.';
         $scope.asignaciones = [];
         $scope.ready = true;
+
+        $scope.confirmacion = function(){
+          if (!$window.sessionStorage.getItem('terminos')) {
+            $window.sessionStorage.setItem('terminos', '0');
+              $scope.modal();
+          }else if ($window.sessionStorage.getItem('terminos') == '0') {
+              $scope.modal();
+          }
+        };
+        $scope.closeModal = function (){
+            $('.modal').modal('close');
+        };
+
+        $scope.modal = function (){
+           $('.modal').modal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                },
+                complete: function() {
+                } // Callback for Modal close
+              }
+            );
+            $('#modal2').modal('open');
+        };
+        $scope.confirmacion();
+
+        $scope.acepto = function () {
+          $window.sessionStorage.setItem('terminos', '1')
+          $scope.terminos = '1';
+        };
+
         $http({
           'url': '/banco/list/asignaciones/',
           'method': 'GET'
@@ -38,7 +77,7 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
         });
     });
 
-    app.controller('EncuestaController', function($scope, $http, $routeParams, $location, $httpParamSerializer){
+    app.controller('EncuestaController', function($scope, $http, $routeParams, $location, $httpParamSerializer, $window){
       var instrumento = $routeParams.instrumento;
       $scope.instrumento = {};
       $scope.intrumentoParams = $routeParams.instrumento;
