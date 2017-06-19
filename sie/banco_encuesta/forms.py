@@ -32,3 +32,35 @@ class FormularioDForm(forms.ModelForm):
         return d
     # end def
 # end class
+
+
+class AsignacionEgresadoForm(forms.ModelForm):
+
+    class Meta:
+        model = models.AsignarEncuestaEgresado
+        exclude = ()
+    # end class
+
+    def __init__(self, *args, **kwargs):
+        super(AsignacionEgresadoForm, self).__init__(*args, **kwargs)
+        self.fields['instrumento'].queryset = self.fields['instrumento'].queryset.filter(tipo=False)
+        self.fields['instrumento'].widget.can_add_related = False
+        self.fields['instrumento'].widget.can_change_related = False
+    # end def
+# end clas
+
+
+class AsignacionEmpleadorForm(forms.ModelForm):
+
+    class Meta:
+        model = models.AsignarEncuestaEmpleador
+        exclude = ()
+    # end class
+
+    def __init__(self, *args, **kwargs):
+        super(AsignacionEmpleadorForm, self).__init__(*args, **kwargs)
+        self.fields['instrumento'].queryset = self.fields['instrumento'].queryset.filter(tipo=True)
+        self.fields['instrumento'].widget.can_add_related = False
+        self.fields['instrumento'].widget.can_change_related = False
+    # end def
+# end class

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from supra import views as supra
+from django.db.models import Q
 import models
 import forms
 from django.views.decorators.csrf import csrf_exempt
@@ -40,7 +41,7 @@ class AsignacionesList(supra.SupraListView):
         orden = self.request.GET.get('sort_direction', False)
         eliminado = self.request.GET.get('eliminado', False)
         if not self.request.user.is_superuser:
-            queryset = queryset.filter(diligenciadores=self.request.user.pk).exclude(formulariod__diligenciador=self.request.user.pk)
+            queryset = queryset.filter(Q(asignarencuestaegresado__egresados=self.request.user.pk) | Q(asignarencuestaempleador__empleadores=self.request.user.pk)).exclude(formulariod__diligenciador=self.request.user.pk)
         if propiedad and orden:
             if orden == "asc":
                 queryset = queryset.order_by(propiedad)

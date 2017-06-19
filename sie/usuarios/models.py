@@ -32,11 +32,17 @@ class Administrador(User):
 class Diligenciador(User):
     fecha_nacimiento = models.DateField()
     identificacion = models.CharField(max_length=100)
+    celular = models.CharField(max_length=10, blank=True, null=True)
+    direccion = models.CharField("Dirección", max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = "Diligenciador"
         verbose_name_plural = "Diligenciadores"
     # end class
+
+    def __unicode__(self):
+        return u"%s %s" % (self.first_name, self.last_name)
+    # end def
 # end class
 
 
@@ -49,10 +55,6 @@ class Egresado(Diligenciador):
         verbose_name = "Egresado"
         verbose_name_plural = "Egresados"
     # end class
-
-    def __unicode__(self):
-        return u"Egresado: %s %s" % (self.first_name, self.last_name)
-    # end def
 # end class
 
 

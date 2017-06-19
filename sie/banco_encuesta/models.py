@@ -9,17 +9,32 @@ from encuesta import models as encuesta
 
 class AsignarEncuesta(models.Model):
     instrumento = models.ForeignKey(encuesta.Instrumento)
-    diligenciadores = models.ManyToManyField(usuarios.Diligenciador)
-    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
     fecha = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Asignación de Encuesta"
-        verbose_name_plural = "Asignaciones de Encuesta"
-    # end class
 
     def __unicode__(self):
         return u"%s %s" % (self.instrumento.nombre, self.fecha.strftime("%Y-%m-%d"))
+    # end def
+# end class
+
+
+class AsignarEncuestaEgresado(AsignarEncuesta):
+    egresados = models.ManyToManyField(usuarios.Egresado)
+    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Asignación encuesta a egresado"
+        verbose_name_plural = "Asignaciones a egresados"
+    # end class
+# end class
+
+
+class AsignarEncuestaEmpleador(AsignarEncuesta):
+    empleadores = models.ManyToManyField(usuarios.Empleador)
+
+    class Meta:
+        verbose_name = "Asignación encuesta a empleador"
+        verbose_name_plural = "Asignaciones  a empleadores"
+    # end class
 # end class
 
 
