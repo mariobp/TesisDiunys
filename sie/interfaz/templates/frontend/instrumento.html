@@ -51,6 +51,12 @@
 </div>
 
 <div class="row" ng-show="!ready" ng-if="instrumento">
+  <div class="col s12">
+    <div class="breadcrumb">
+      <a class="breadcrumb__step" href="/#!/home">Inicio</a>
+      <a class="breadcrumb__step breadcrumb__step--active" href="#!/encuesta/[[intrumentoParams]]/[[asignacionParams]]">Encuesta</a>
+    </div>
+  </div>
   <form class="col s12" name="form" ng-submit="validacionForm() && enviar()" novalidate>
     <div class="card">
       <div class="card-content">

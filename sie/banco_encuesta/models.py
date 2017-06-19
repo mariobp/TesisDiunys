@@ -34,7 +34,7 @@ class FormularioD(models.Model):
     # end class
 
     def __unicode__(self):
-        return u'%s' % (self.instrumento)
+        return u'%s' % (self.asignacion.instrumento)
     # end def
 # end class
 

@@ -8,7 +8,6 @@ from django.db import models
 class Pregunta(models.Model):
     enunciado = models.CharField(max_length=100)
     numero = models.IntegerField()
-    estado = models.BooleanField(default=True, help_text="Indica si esta habilitada")
 
     class Meta:
         verbose_name = "Pregunta"
@@ -52,10 +51,15 @@ class Opcion(models.Model):
 
 
 class Instrumento(models.Model):
+    opciones = (
+        (False, "Egresado"),
+        (True, "Empleador")
+    )
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(max_length=500)
     fecha = models.DateTimeField(auto_now_add=True)
     preguntas = models.ManyToManyField(Cerrada)
+    tipo = models.BooleanField(default=False, choices=opciones)
 
     class Meta:
         verbose_name = "Instrumento"

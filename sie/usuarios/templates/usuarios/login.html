@@ -20,29 +20,52 @@
     <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper  light-blue darken-4">
-        <a href="#!" class="brand-logo center">Sie</a>
-        </ul>
+        <a href="#!" class="brand-logo ">
+          <img  src="/media/logo.png" alt="">
+        </a>
       </div>
     </nav>
   </div>
   </header>
   <main>
     <div class="container">
-    <div class="row parent">
-      <div class="col s12 m6 l6">
-        <div class="card">
-          <div class="card-content">
-            <form method="post">
-              {% csrf_token %}
-              {{ form }}
-              <button class="waves-effect waves-light btn" type="submit">Iniciar sesión</button>
-            </form>
+      <div class="row parent">
+        <div class="col s12 m6 l6">
+          <div class="card">
+            <div class="card-content">
+              <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="waves-effect waves-light btn" type="submit">Iniciar sesión</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
   </main>
+    <footer class="page-footer light-blue darken-4">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">H.I.E</h5>
+            <p class="grey-text text-lighten-4">Herramienta informatica para apoyar los medios de participación del egresado del programa de Ingeniería de Sistemas de la Universidad de Cartagena.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <ul>
+              <li><a class="white-text " target="_blank"  href="https://www.unicartagena.edu.co/egresado"><i class="material-icons">school</i> <span>Egresados</span></a></li>
+              <li><a class="white-text " target="_blank"  href="https://www.facebook.com/groups/ceisunicartagena/"><img src="/media/facebook-24.png" alt=""> Fanpage</a></li>
+              <li><a class="white-text " target="_blank" href="mailto:pringsistemas@unicartagena.edu.co"><i class="material-icons">email</i> <span>Correo</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+            Copyright © 2017 Universidad de Cartagena. Todos los derechos reservados. Conoce nuestras Políticas, Términos y Condiciones.
+        </div>
+      </div>
+    </footer>
   <script type="text/javascript" src="{% static "frontend/js/jquery-2.1.1.min.js" %}"></script>
   <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
   {% block script %} {% endblock %}

@@ -49,6 +49,10 @@ class Egresado(Diligenciador):
         verbose_name = "Egresado"
         verbose_name_plural = "Egresados"
     # end class
+
+    def __unicode__(self):
+        return u"Egresado: %s %s" % (self.first_name, self.last_name)
+    # end def
 # end class
 
 

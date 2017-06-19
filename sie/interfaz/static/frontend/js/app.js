@@ -41,6 +41,8 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
     app.controller('EncuestaController', function($scope, $http, $routeParams, $location, $httpParamSerializer){
       var instrumento = $routeParams.instrumento;
       $scope.instrumento = {};
+      $scope.intrumentoParams = $routeParams.instrumento;
+      $scope.asignacionParams = $routeParams.asignacion;
       $scope.respuestas = [];
       $scope.valid = [];
       $scope.ready = true;
