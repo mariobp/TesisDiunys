@@ -12,11 +12,12 @@ supra.SupraConf.body = True
 
 class AsignacionesList(supra.SupraListView):
     model = models.AsignarEncuesta
-    list_display = ['id', 'nombre_ins', 'fecha']
+    list_display = ['id', 'nombre_ins', "descripcion_ins", 'fecha', 'id_ins']
     search_fields = ['nombre_ins', ]
 
     class Renderer:
         nombre_ins = "instrumento__nombre"
+        descripcion_ins = "instrumento__descripcion"
         id_ins = "instrumento__id"
     # end class
 
@@ -34,7 +35,7 @@ class AsignacionesList(supra.SupraListView):
         orden = self.request.GET.get('sort_direction', False)
         eliminado = self.request.GET.get('eliminado', False)
         if not self.request.user.is_superuser:
-            queryset = queryset.filter(diligenciadores=self.request.user.pk)
+            queryset = queryset.filter(diligenciadores=self.request.user.pk).exclude(formulariod__diligenciador=self.request.user.pk)
         if propiedad and orden:
             if orden == "asc":
                 queryset = queryset.order_by(propiedad)
@@ -55,7 +56,7 @@ class RespuestaInline(supra.SupraInlineFormView):
 
 class OtrosInline(supra.SupraInlineFormView):
     model = models.Otros
-    base_model = models.Otros
+    base_model = models.FormularioD
 # end class
 
 

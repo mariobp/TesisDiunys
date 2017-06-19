@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from encuesta import models
 from django.contrib.auth.decorators import login_required
 from supra import views as supra
 from django.contrib.auth import login, logout, authenticate
@@ -15,6 +14,20 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url="/usuarios/login/")
 def index(request):
-    encuestas = models.Instrumento.objects.all()
-    return render(request, 'frontend/index.html', {"encuestas": encuestas})
+    return render(request, 'frontend/index.html', {})
+# end def
+
+
+def encuestas(request):
+    return render(request, 'frontend/encuestas.html', {})
+# end def
+
+
+def instrumento(request):
+    return render(request, 'frontend/instrumento.html', {})
+# end def
+
+
+def perfil(request):
+    return render(request, 'frontend/perfil.html', {})
 # end def

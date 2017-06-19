@@ -28,3 +28,8 @@ body {
 .parent div{
   margin: 0 auto;
 }
+
+
+nav .brand-logo {
+  padding-left: 10px;
+}

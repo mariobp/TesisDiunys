@@ -3,23 +3,24 @@
 <html>
 
 <head>
+  <title>Sie</title>
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="{% static "frontend/css/style.css" %}"/>
-  <title>Sie</title>
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% block css %} {% endblock %}
 </head>
 
-<body>
+<body ng-app="myApp">
   <!--Import jQuery before materialize.js-->
   <header>
     <div class="navbar-fixed">
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">Actualizar datos</a></li>
+        <li><a href="#!/perfil">Actualizar datos</a></li>
+        <li><a href="/usuarios/password/">Cambiar contraseña</a></li>
         <li><a href="{% url "logOut" %}">Cerrar Sesión</a></li>
       </ul>
       <nav>
@@ -30,19 +31,20 @@
             {% if user.is_authenticated and user.is_superuser %}
             <li><a href="/dashboard/">Administración</a></li>
             {% endif %}
-            <li><a href="#">Encuestas</a></li>
+            <li><a href="/">Encuestas</a></li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Perfil<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
           <ul class="side-nav collapsible" id="mobile-demo">
             {% if user.is_authenticated and user.is_superuser %}
             <li><a href="/dashboard/">Administración</a></li>
             {% endif %}
-            <li><a href="#">Encuestas</a></li>
+            <li><a href="/">Encuestas</a></li>
             <li>
                 <a class="collapsible-header waves-effect" href="#">Perfil</a>
                 <div class="collapsible-body">
                   <ul>
-                    <li><a href="#!">Actualizar datos</a></li>
+                    <li><a href="#!/perfil">Actualizar datos</a></li>
+                    <li><a href="/usuarios/password/">Cambiar contraseña</a></li>
                     <li><a href="{% url "logOut" %}">Cerrar Sesión</a></li>
                   </ul>
                 </div>
@@ -79,8 +81,14 @@
     </div>
   </footer>
   <script type="text/javascript" src="{% static "frontend/js/jquery-2.1.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "bower_components/angular/angular.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "bower_components/angular/angular-messages.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "bower_components/angular/angular-route.min.js" %}"></script>
   <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
   <script type="text/javascript" src="{% static "frontend/js/index.js" %}"></script>
+  <script type="text/javascript" src="{% static "frontend/js/app.js" %}"></script>
+
   {% block script %} {% endblock %}
 </body>
 
