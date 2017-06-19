@@ -25,7 +25,7 @@ class CerradaSupra(supra.SupraListView):
     def opciones(self, obj, row):
         class request():
             method = 'GET'
-            GET = {'opcion': obj.pk}
+            GET = {'pregunta': obj.pk}
         # end class
         lista = OpcionSupra(dict_only=True).dispatch(request=request())
         return json.dumps(lista)

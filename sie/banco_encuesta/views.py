@@ -6,13 +6,14 @@ from supra import views as supra
 import models
 import forms
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 supra.SupraConf.body = True
 
 
 class AsignacionesList(supra.SupraListView):
     model = models.AsignarEncuesta
-    list_display = ['id', 'nombre_ins', "descripcion_ins", 'fecha', 'id_ins']
+    list_display = ['id', 'nombre_ins', "descripcion_ins", 'date', 'id_ins']
     search_fields = ['nombre_ins', ]
 
     class Renderer:
@@ -21,7 +22,11 @@ class AsignacionesList(supra.SupraListView):
         id_ins = "instrumento__id"
     # end class
 
-    # @method_decorator(check_login)
+    def date(self, obj, row):
+        return obj.fecha.strftime("%Y/%m/%d")
+    # end def
+
+    @method_decorator(login_required(login_url='/usuarios/login/'))
     def dispatch(self, request, *args, **kwargs):
         return super(AsignacionesList, self).dispatch(request, *args, **kwargs)
     # end def
