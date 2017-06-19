@@ -7,7 +7,6 @@ from django.db import models
 
 class Pregunta(models.Model):
     enunciado = models.CharField(max_length=100)
-    descripcion = models.TextField(blank=True, null=True)
     numero = models.IntegerField()
     estado = models.BooleanField(default=True, help_text="Indica si esta habilitada")
 

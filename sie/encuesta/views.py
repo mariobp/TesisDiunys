@@ -19,7 +19,7 @@ class OpcionSupra(supra.SupraListView):
 
 class CerradaSupra(supra.SupraListView):
     model = models.Cerrada
-    list_display = ['enunciado', 'descripcion', 'multiple', 'otro', 'numero', 'id', ('opciones', 'json')]
+    list_display = ['enunciado', 'multiple', 'otro', 'numero', 'id', ('opciones', 'json')]
     list_filter = ['instrumento']
 
     def opciones(self, obj, row):

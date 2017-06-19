@@ -13,8 +13,8 @@ class OpcionStack(admin.StackedInline):
 
 @admin.register(encuesta.Cerrada)
 class CerradaAdmin(admin.ModelAdmin):
-    list_display = ('enunciado', 'descripcion', 'numero', 'estado')
-    search_fields = ('enunciado', 'descripcion')
+    list_display = ('enunciado', 'numero', 'estado')
+    search_fields = ('enunciado',)
     inlines = [OpcionStack]
     icon = '<i class="material-icons">format_list_numbered</i>'
 # end class
