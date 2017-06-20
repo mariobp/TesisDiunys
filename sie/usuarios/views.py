@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 from supra import views as supra
 from django.contrib.auth import login, logout, authenticate
 from django.utils.decorators import method_decorator
@@ -10,8 +11,10 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from sie.http import response
+from models import Diligenciador
+from forms import DiligenciadorForm
 import json as simplejson
+supra.SupraConf.body = True
 
 # Create your views here.
 
@@ -29,9 +32,13 @@ class Login(supra.SupraSession):
 
 def islogin(request):
     if request.user.is_authenticated():
-        return response(simplejson.dumps({"session": request.session.session_key, "username": request.user.username}), 200)
+        diligenciador = Diligenciador.objects.filter(
+            id=request.user.id).first()
+        if diligenciador:
+            return HttpResponse(simplejson.dumps({"id": diligenciador.id, "celular": diligenciador.celular, "email": diligenciador.email, "direccion": diligenciador.direccion}), 200)
+        return HttpResponse(simplejson.dumps({"id": None, "celular": None, "email": None, "direccion": None}), 200)
     # end if
-    return response([], 400)
+    return HttpResponse([], 400)
 # end if
 
 
@@ -39,6 +46,19 @@ def logoutUsers(request):
     logout(request)
     return redirect('/')
 # end def
+
+
+class DiligenciadorSupraForm(supra.SupraFormView):
+    model = Diligenciador
+    form_class = DiligenciadorForm
+    template_name = "usuarios/form.html"
+    response_json = False
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(DiligenciadorSupraForm, self).dispatch(request, *args, **kwargs)
+    # end def
+# end class
 
 
 @login_required(login_url='/usuarios/login/')

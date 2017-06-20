@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^logout/$', views.logoutUsers, name="logOut"),
     url(r'^is/login/$', views.islogin, name="isLogin"),
     url(r'^password/$', views.change_password, name='change_password'),
+    url(r'^diligenciador/edit/(?P<pk>\d+)/$',
+        views.DiligenciadorSupraForm.as_view(), name="diligenciador"),
 ]

@@ -77,7 +77,7 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
         });
     });
 
-    app.controller('EncuestaController', function($scope, $http, $routeParams, $location, $httpParamSerializer, $window){
+    app.controller('EncuestaController', function($scope, $http, $routeParams, $location, $window){
       var instrumento = $routeParams.instrumento;
       $scope.instrumento = {};
       $scope.intrumentoParams = $routeParams.instrumento;
@@ -232,5 +232,37 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
     });
 
     app.controller('PerfilController' ,function($scope, $http){
+        $scope.data = {};
+        $scope.ready = true;
+        $http({
+          'url': '/usuarios/is/login/',
+          'method': 'GET'
+        }).then(function doneCallbacks(response){
+            if (response.status == 200) {
+              $scope.data = response.data;
+            }
+            $scope.ready = false;
+        }, function failCallbacks(response){
+            console.log(response);
+            $scope.ready = false;
+        });
 
+        $scope.enviar = function(){
+
+          $scope.ready = true;
+          $http({
+            'url': '/usuarios/diligenciador/edit/' + $scope.data.id + '/',
+            'method': 'POST',
+            'data': $scope.data,
+             headers: {
+                 'Content-Type': 'application/x-www-form-urlencoded'
+             },
+          }).then(function doneCallbacks(response){
+              $scope.ready = false;
+              Materialize.toast('Actualizado con exito!', 4000); // 4000 is the duration of the toast
+
+          }, function failCallbacks(response){
+            console.log(response);
+          })
+        };
     });

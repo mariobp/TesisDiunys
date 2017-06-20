@@ -73,7 +73,8 @@ class EgresadoForm(UserCreationForm):
     class Meta:
         model = usuarios.Egresado
         fields = ['username', 'password1', 'password2', 'email', 'first_name',
-                  'last_name', 'identificacion', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_egreso', 'graduado']
+                  'last_name', 'identificacion', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_egreso',
+                  'celular', 'direccion', 'graduado']
     # end class
 
     def save(self, commit=True):
@@ -89,7 +90,8 @@ class EgresadoEdit(forms.ModelForm):
     class Meta:
         model = usuarios.Egresado
         fields = ['username', 'email', 'first_name',
-                  'last_name', 'identificacion', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_egreso', 'graduado']
+                  'last_name', 'identificacion', 'fecha_nacimiento', 'fecha_ingreso', 'fecha_egreso',
+                  'celular', 'direccion', 'graduado']
     # end class
 # end class
 
@@ -99,7 +101,8 @@ class EmpleadorForm(UserCreationForm):
     class Meta:
         model = usuarios.Empleador
         fields = ['username', 'password1', 'password2', 'email', 'first_name',
-                  'last_name', 'identificacion', 'fecha_nacimiento', 'empresa', 'nit']
+                  'last_name', 'identificacion', 'fecha_nacimiento',
+                  'celular', 'direccion', 'empresa', 'nit']
     # end class
 
     def save(self, commit=True):
@@ -115,6 +118,16 @@ class EmpleadorFormEdit(forms.ModelForm):
     class Meta:
         model = usuarios.Empleador
         fields = ['username', 'email', 'first_name',
-                  'last_name', 'identificacion', 'fecha_nacimiento', 'empresa', 'nit']
+                  'last_name', 'identificacion', 'fecha_nacimiento',
+                  'celular', 'direccion', 'empresa', 'nit']
+    # end class
+# end class
+
+
+class DiligenciadorForm(forms.ModelForm):
+
+    class Meta:
+        model = usuarios.Diligenciador
+        fields = ['email', 'celular', 'direccion']
     # end class
 # end class

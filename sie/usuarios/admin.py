@@ -9,7 +9,7 @@ import forms as form
 
 @admin.register(usuarios.Director)
 class DirectorAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'identificacion',
+    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',
                     'cargo', 'fecha_nacimiento')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
@@ -27,7 +27,7 @@ class DirectorAdmin(admin.ModelAdmin):
 
 @admin.register(usuarios.Administrador)
 class AdministradorAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'identificacion', 'fecha_nacimiento')
+    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email', 'fecha_nacimiento')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">person_outline</i>'
@@ -44,7 +44,7 @@ class AdministradorAdmin(admin.ModelAdmin):
 
 @admin.register(usuarios.Egresado)
 class EgresadoAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'identificacion', 'graduado',
+    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email', 'graduado',
                     'fecha_nacimiento', 'fecha_ingreso', 'fecha_egreso')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
@@ -62,7 +62,7 @@ class EgresadoAdmin(admin.ModelAdmin):
 
 @admin.register(usuarios.Empleador)
 class EmpleadorAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'identificacion',
+    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',
                     'empresa', 'nit', 'fecha_nacimiento')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
