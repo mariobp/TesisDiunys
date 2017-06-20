@@ -6,7 +6,7 @@ from django.db import models
 
 
 class Pregunta(models.Model):
-    enunciado = models.CharField(max_length=100)
+    enunciado = models.TextField()
     numero = models.IntegerField()
 
     class Meta:
