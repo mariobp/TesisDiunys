@@ -40,10 +40,6 @@ class Opcion(models.Model):
         verbose_name_plural = "Opciones"
     # end class
 
-    def pregunta_id(self):
-        return pregunta.id
-    # end def
-
     def __unicode__(self):
         return u'%s' % (self.texto)
     # end def
