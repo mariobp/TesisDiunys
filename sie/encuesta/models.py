@@ -45,7 +45,7 @@ class Opcion(models.Model):
     # end def
 
     def __unicode__(self):
-        return u'%s %s' % (self.pregunta, self.texto)
+        return u'%s' % (self.texto)
     # end def
 # end class
 
