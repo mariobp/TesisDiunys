@@ -39,7 +39,7 @@ class AsignarEncuestaEmpleador(AsignarEncuesta):
 
 
 class FormularioD(models.Model):
-    asignacion = models.ForeignKey(AsignarEncuesta)
+    asignacion = models.ForeignKey(AsignarEncuesta, verbose_name="Asignación")
     diligenciador = models.ForeignKey(usuarios.Diligenciador)
     fecha = models.DateTimeField(auto_now_add=True)
 

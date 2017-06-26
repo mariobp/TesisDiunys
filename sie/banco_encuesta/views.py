@@ -5,9 +5,12 @@ from django.shortcuts import render
 from supra import views as supra
 from django.db.models import Q
 import models
+from encuesta.models import Instrumento, Opcion
 import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+import xlwt
 # Create your views here.
 supra.SupraConf.body = True
 
@@ -77,3 +80,53 @@ class FormularioDSupraForm(supra.SupraFormView):
         return super(FormularioDSupraForm, self).dispatch(request, *args, **kwargs)
     # end def
 # end class
+
+
+def exporExel(request, id):
+    instru = Instrumento.objects.filter(id=id).first()
+    if instru:
+        response = HttpResponse(content_type='application/ms-excel')
+        response['Content-Disposition'] = 'attachment; filename="%s.xls"' % (instru.nombre)
+        wb = xlwt.Workbook(encoding='utf-8')
+        ws = wb.add_sheet('Encuesta')
+        # Sheet header, first row
+        row_num = 0
+        columns = []
+        columns2 = []
+        for index, pregunta in enumerate(instru.preguntas.all()):
+            font_style = xlwt.XFStyle()
+            font_style.font.bold = True
+            ws.write(row_num, 0, pregunta.enunciado, font_style)
+            opciones = Opcion.objects.filter(pregunta=pregunta.id)
+            row_num += 1
+            for o in opciones:
+                columns.append(o.texto)
+                columns2.append({"id": o.pk, "texto": o.texto})
+            # end for
+            if pregunta.otro:
+                columns.append("Otros")
+            # end if
+            for col_num in range(len(columns)):
+                ws.write(row_num, col_num, columns[col_num], font_style)
+            # end for
+            row_num += 1
+            font_style = xlwt.XFStyle()
+            for col_num in range(len(columns)):
+                if columns[col_num] == "Otros":
+                    print "entroo", col_num, len(columns)
+                    otros = models.Otros.objects.filter(pregunta=pregunta)
+                    for o in otros:
+                        ws.write(row_num, col_num, o.respuesta, font_style)
+                        row_num += 1
+                    # end for
+                else:
+                    respuestas = models.Cerrada.objects.filter(pregunta=pregunta, respuestas__texto=columns[col_num]).count()
+                    ws.write(row_num, col_num, respuestas, font_style)
+            # end for
+            row_num += 2
+            columns = []
+        # end for
+        wb.save(response)
+        return response
+    # end if
+    return HttpResponse(status=404)

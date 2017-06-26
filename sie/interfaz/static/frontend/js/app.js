@@ -197,8 +197,8 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
             }
           }
           if(element.otro){
-            dataSend['otros_set'+ index +'-pregunta'] = element.pregunta;
-            dataSend['otros_set'+ index +'-respuesta'] = element.otro;
+            dataSend['otros_set-'+ count +'-pregunta'] = element.pregunta;
+            dataSend['otros_set-'+ count +'-respuesta'] = element.otro;
             count ++;
           }
         });

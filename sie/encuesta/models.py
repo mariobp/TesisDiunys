@@ -63,11 +63,7 @@ class Instrumento(models.Model):
     # end class
 
     def descargar_datos(self):
-        return "<a>Datos</a>"
-    # end def
-
-    def estadisticas(self):
-        return "Graficos"
+        return '<a href="/banco/export/xls/%d/">Exportar Datos</a>' % (self.pk)
     # end def
 
     descargar_datos.allow_tags = True

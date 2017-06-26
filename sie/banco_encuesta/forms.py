@@ -2,6 +2,7 @@
 from django import forms
 from cuser.middleware import CuserMiddleware
 import models
+from encuesta.models import Opcion
 from usuarios.models import Diligenciador
 
 

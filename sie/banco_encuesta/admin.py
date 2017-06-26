@@ -9,12 +9,14 @@ import forms
 
 class OtrosStack(admin.StackedInline):
     model = Otros
+    readonly_fields = ('pregunta', 'respuesta')
     extra = 0
 # end class
 
 
 class CerradaStack(admin.StackedInline):
     model = Cerrada
+    readonly_fields = ('pregunta', 'respuestas')
     extra = 0
 # end class
 
@@ -22,6 +24,7 @@ class CerradaStack(admin.StackedInline):
 @admin.register(FormularioD)
 class FormularioDAdmin(admin.ModelAdmin):
     list_display = ('diligenciador', 'asignacion', 'fecha')
+    readonly_fields = ('asignacion', 'diligenciador')
     list_filter = list_display
     search_fields = ('asignacion__instrumento__nombre', 'diligenciador__first_name', 'diligenciador__last_name', 'diligenciador__identificacion')
     inlines = [CerradaStack, OtrosStack]

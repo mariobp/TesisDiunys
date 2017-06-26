@@ -22,7 +22,7 @@ class CerradaAdmin(admin.ModelAdmin):
 
 @admin.register(encuesta.Instrumento)
 class InstrumentoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'descripcion', 'tipo', 'fecha', 'descargar_datos', 'estadisticas')
+    list_display = ('nombre', 'descripcion', 'tipo', 'fecha', 'descargar_datos',)
     search_fields = ('nombre', 'descripcion')
     filter_horizontal = ('preguntas',)
     icon = '<i class="material-icons">content_paste</i>'
