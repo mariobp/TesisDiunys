@@ -7,3 +7,6 @@ from django.apps import AppConfig
 class BancoEncuestaConfig(AppConfig):
     name = 'banco_encuesta'
     icon = '<i class="material-icons">assessment</i>'
+
+    def ready(self):
+        import signals

@@ -113,11 +113,9 @@ def exporExel(request, id):
             font_style = xlwt.XFStyle()
             for col_num in range(len(columns)):
                 if columns[col_num] == "Otros":
-                    print "entroo", col_num, len(columns)
-                    otros = models.Otros.objects.filter(pregunta=pregunta)
-                    for o in otros:
-                        ws.write(row_num, col_num, o.respuesta, font_style)
-                        row_num += 1
+                    otros = models.Otros.objects.filter(pregunta=pregunta).count()
+                    ws.write(row_num, col_num, otros, font_style)
+                    row_num += 1
                     # end for
                 else:
                     respuestas = models.Cerrada.objects.filter(pregunta=pregunta, respuestas__texto=columns[col_num]).count()

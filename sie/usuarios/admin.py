@@ -63,7 +63,7 @@ class EgresadoAdmin(admin.ModelAdmin):
 @admin.register(usuarios.Empleador)
 class EmpleadorAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',
-                    'empresa', 'nit', 'fecha_nacimiento')
+                    'empresa', 'nit', 'cargo', 'fecha_nacimiento')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">work</i>'

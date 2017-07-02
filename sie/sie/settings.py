@@ -31,6 +31,13 @@ LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mariobarrios@exile.com.co'
+EMAIL_HOST_PASSWORD = 'grwlbpmnvfxlofjz'
+
 INSTALLED_APPS = [
     'material.theme.lightblue',
     'material',
@@ -46,7 +53,6 @@ INSTALLED_APPS = [
     'banco_encuesta.apps.BancoEncuestaConfig',
     'interfaz.apps.InterfazConfig',
     'cuser'
-
 ]
 
 MIDDLEWARE = [
