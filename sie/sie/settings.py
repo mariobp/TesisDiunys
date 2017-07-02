@@ -39,6 +39,7 @@ EMAIL_HOST_USER = 'mariobarrios@exile.com.co'
 EMAIL_HOST_PASSWORD = 'grwlbpmnvfxlofjz'
 
 INSTALLED_APPS = [
+    'custom',
     'material.theme.lightblue',
     'material',
     'material.admin',

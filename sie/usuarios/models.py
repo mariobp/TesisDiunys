@@ -78,7 +78,7 @@ class Empleador(Diligenciador):
     empresa = models.CharField("Nombre empresa", max_length=100)
     nit = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
-    
+
     class Meta:
         verbose_name = "Empleador"
         verbose_name_plural = "Empleadores"
