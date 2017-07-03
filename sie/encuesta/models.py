@@ -68,6 +68,12 @@ class Instrumento(models.Model):
 
     descargar_datos.allow_tags = True
 
+    def estadisticas(self):
+        return '<a href="#" onclick="data(%d)">Estadisticas</a>' % (self.pk)
+    # end def
+
+    estadisticas.allow_tags = True
+
     def __unicode__(self):
         return unicode(self.nombre)
     # end def

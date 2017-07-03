@@ -136,6 +136,7 @@ def dataPie(request, id):
         preguntas = []
         for pregunta in instru.preguntas.all():
             respuestas = []
+            respuestas.append(["Opciones", "Numero de respuestas"])
             opciones = Opcion.objects.filter(pregunta=pregunta.id)
             for o in opciones:
                 respuesta = models.Cerrada.objects.filter(pregunta=pregunta, respuestas__id=o.id).count()
