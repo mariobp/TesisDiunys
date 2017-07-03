@@ -65,3 +65,12 @@ class AsignacionEmpleadorForm(forms.ModelForm):
         self.fields['instrumento'].widget.can_change_related = False
     # end def
 # end class
+
+
+class CerradaForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Cerrada
+        exclude = ()
+    # end class
+# end class

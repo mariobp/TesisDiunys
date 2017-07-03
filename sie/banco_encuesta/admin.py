@@ -17,6 +17,7 @@ class OtrosStack(admin.StackedInline):
 class CerradaStack(admin.StackedInline):
     model = Cerrada
     readonly_fields = ('pregunta', 'respuestas')
+    form = forms.CerradaForm
     extra = 0
 # end class
 

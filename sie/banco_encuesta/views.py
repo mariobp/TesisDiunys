@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import xlwt
+import json
 # Create your views here.
 supra.SupraConf.body = True
 
@@ -92,7 +93,6 @@ def exporExel(request, id):
         # Sheet header, first row
         row_num = 0
         columns = []
-        columns2 = []
         for index, pregunta in enumerate(instru.preguntas.all()):
             font_style = xlwt.XFStyle()
             font_style.font.bold = True
@@ -101,7 +101,6 @@ def exporExel(request, id):
             row_num += 1
             for o in opciones:
                 columns.append(o.texto)
-                columns2.append({"id": o.pk, "texto": o.texto})
             # end for
             if pregunta.otro:
                 columns.append("Otros")
@@ -128,3 +127,28 @@ def exporExel(request, id):
         return response
     # end if
     return HttpResponse(status=404)
+# end def
+
+
+def dataPie(request, id):
+    instru = Instrumento.objects.filter(id=id).first()
+    if instru:
+        preguntas = []
+        for pregunta in instru.preguntas.all():
+            respuestas = []
+            opciones = Opcion.objects.filter(pregunta=pregunta.id)
+            for o in opciones:
+                respuesta = models.Cerrada.objects.filter(pregunta=pregunta, respuestas__id=o.id).count()
+                respuestas.append([o.texto, respuesta])
+            # end for
+            if pregunta.otro:
+                otros = models.Otros.objects.filter(pregunta=pregunta).count()
+                respuestas.append(['Otros', otros])
+            # end if
+            preguntas.append({"pregunta": pregunta.enunciado, "respuestas": respuestas})
+        # end for
+        data = {"nombre": instru.nombre, "descripcion": instru.descripcion, "preguntas": preguntas}
+        return HttpResponse(json.dumps(data), 200)
+    # end if
+    return HttpResponse(status=404)
+# end def
