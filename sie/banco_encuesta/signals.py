@@ -35,10 +35,10 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
 
                 <ul>
                     <li>
-                       Usuario: código estudiantil
+                       Usuario: cedula de identificación
                     </li>
                     <li>
-                       Contraseña: primer letra de su nombre + cedula de identificación
+                       Contraseña: cedula de identificación
                     </li>
                 </ul>
 

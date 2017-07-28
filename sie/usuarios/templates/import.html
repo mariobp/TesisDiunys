@@ -1,0 +1,164 @@
+{% extends "admin/import_export/base.html" %}
+{% load i18n %}
+{% load admin_urls %}
+{% load import_export_tags material_form %}
+
+{% block breadcrumbs %}
+{% if not is_popup %}
+<nav class="breadcrumbs">
+    <div class="nav-wrapper">
+        {% block breadcrumbs_items %}
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <a class="active" href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        > {% trans "Import" %}
+        {% endblock %}
+    </div>
+</nav>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="left-panel">
+
+{% if confirm_form %}
+  <form action="{% url opts|admin_urlname:"process_import" %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    {{ confirm_form.as_p }}
+                    <p>
+                      {% trans "Below is a preview of data to be imported. If you are satisfied with the results, click 'Confirm import'" %}
+                    </p>
+                      <input type="submit" class="btn" name="confirm" value="{% trans "Confirm import" %}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  </form>
+
+{% else %}
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="left-panel">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <p>
+                            {% trans "This importer will import the following fields: " %}
+                            <code>{{ fields|join:", " }}</code>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        {% form form=form layout=form.layout %}{% endform %}
+                    </div>
+
+                    <div class="submit-row">
+                        <input type="submit" class="btn" value="{% trans " Submit " %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </form>
+{% endif %}
+
+{% if result %}
+
+  {% if result.has_errors %}
+      <div class="row">
+          <div class="col s12">
+              <div class="card">
+                  <div class="card-content">
+                      <h4>{% trans "Errors" %}</h4>
+                      <ul class="collection">
+                        {% for error in result.base_errors  %}
+                        <li class="collection-item">
+                          {{ error.error }}
+                          <div class="traceback">{{ error.traceback|linebreaks }}</div>
+                        </li>
+                        {% endfor %}
+                        {% for line, errors in result.row_errors %}
+                          {% for error in errors %}
+                            <li class="collection-item">
+                              {% trans "Line number" %}: {{ line }} - {{ error.error }}
+                              <div><code>{{ error.row.values|join:", " }}</code></div>
+                              <div class="traceback">{{ error.traceback|linebreaks }}</div>
+                            </li>
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  {% else %}
+    <div class="row">
+        <div class="col s12">
+            <h4>
+              {% trans "Preview" %}
+              </h4>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="dataTables_wrapper no-footer">
+                            <div class="results">
+                                <table class="table bordered dataTable no-footer">
+                                  <thead>
+                                    <tr>
+                                      <th></th>
+                                      {% for field in result.diff_headers %}
+                                        <th>{{ field }}</th>
+                                      {% endfor %}
+                                    </tr>
+                                  </thead>
+                                  {% for row in result.rows %}
+                                  <tr>
+                                    <td>
+                                      {% if row.import_type == 'new' %}
+                                        {% trans "New" %}
+                                      {% elif row.import_type == 'skip' %}
+                                        {% trans "Skipped" %}
+                                      {% elif row.import_type == 'delete' %}
+                                        {% trans "Delete" %}
+                                      {% elif row.import_type == 'update' %}
+                                        {% trans "Update" %}
+                                      {% endif %}
+                                    </td>
+                                    {% for field in row.diff %}
+                                    <td>
+                                      {{ field }}
+                                    </td>
+                                    {% endfor %}
+                                  </tr>
+                                  {% endfor %}
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+  {% endif %}
+
+  {% endif %}
+      </div>
+{% endblock %}

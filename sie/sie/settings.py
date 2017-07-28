@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'encuesta.apps.EncuestaConfig',
     'banco_encuesta.apps.BancoEncuestaConfig',
     'interfaz.apps.InterfazConfig',
-    'cuser'
+    'cuser',
+    'django_excel',
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cuser.middleware.CuserMiddleware',
 ]
+
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
 
 ROOT_URLCONF = 'sie.urls'
 

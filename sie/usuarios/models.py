@@ -49,7 +49,7 @@ class Diligenciador(User):
 class Egresado(Diligenciador):
     fecha_ingreso = models.DateField()
     fecha_egreso = models.DateField()
-    graduado = models.BooleanField()
+    graduado = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Egresado"
