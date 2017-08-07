@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'banco_encuesta.apps.BancoEncuestaConfig',
     'interfaz.apps.InterfazConfig',
     'cuser',
-    'django_excel',
     'import_export'
 ]
 
