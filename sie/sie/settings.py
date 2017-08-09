@@ -68,9 +68,6 @@ MIDDLEWARE = [
     'cuser.middleware.CuserMiddleware',
 ]
 
-FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
-                        "django_excel.TemporaryExcelFileUploadHandler")
-
 ROOT_URLCONF = 'sie.urls'
 
 TEMPLATES = [
