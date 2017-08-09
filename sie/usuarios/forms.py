@@ -102,7 +102,7 @@ class EmpleadorForm(UserCreationForm):
         model = usuarios.Empleador
         fields = ['username', 'password1', 'password2', 'email', 'first_name',
                   'last_name', 'identificacion', 'fecha_nacimiento',
-                  'celular', 'direccion', 'empresa', 'nit']
+                  'celular', 'direccion', 'empresa', 'nit', 'cargo']
     # end class
 
     def save(self, commit=True):
@@ -119,7 +119,7 @@ class EmpleadorFormEdit(forms.ModelForm):
         model = usuarios.Empleador
         fields = ['username', 'email', 'first_name',
                   'last_name', 'identificacion', 'fecha_nacimiento',
-                  'celular', 'direccion', 'empresa', 'nit']
+                  'celular', 'direccion', 'empresa', 'nit', 'cargo']
     # end class
 # end class
 
