@@ -31,7 +31,6 @@ class Administrador(User):
 
 class Diligenciador(User):
     fecha_nacimiento = models.DateField()
-    identificacion = models.CharField(max_length=100, unique=True)
     celular = models.CharField(max_length=10, blank=True, null=True)
     direccion = models.CharField("Dirección", max_length=100, blank=True, null=True)
 
@@ -47,6 +46,7 @@ class Diligenciador(User):
 
 
 class Egresado(Diligenciador):
+    identificacion = models.CharField(max_length=100, unique=True )
     fecha_ingreso = models.DateField()
     fecha_egreso = models.DateField()
     graduado = models.BooleanField(default=True)
@@ -75,8 +75,9 @@ class GrupoPeriodo(models.Model):
 
 
 class Empleador(Diligenciador):
+    identificacion = models.CharField(max_length=100, blank=True, null=True)
     empresa = models.CharField("Nombre empresa", max_length=100)
-    nit = models.CharField(max_length=100)
+    nit = models.CharField(max_length=100, unique=True)
     cargo = models.CharField(max_length=100)
 
     class Meta:
