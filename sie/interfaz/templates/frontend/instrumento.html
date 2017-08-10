@@ -68,7 +68,7 @@
         </div>
         <div class="row" ng-repeat="(p, pregunta) in instrumento.preguntasList.object_list | orderBy: 'numero'">
           <div class="col s12">
-            <p>[[pregunta.numero]]. [[pregunta.enunciado]]</p>
+            <p>[[$index+1]]. [[pregunta.enunciado]]</p>
             <br>
             <input type="hidden" name="master-[[pregunta.id]]" ng-model="respuestas[p].pregunta" ng-init="respuestas[p].pregunta = pregunta.id">
             <p ng-repeat="opcion in pregunta.opciones.object_list" ng-if="!pregunta.multiple">
