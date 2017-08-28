@@ -87,12 +87,6 @@ class EgresadoAdmin(ImportMixin, admin.ModelAdmin):
     resource_class = EgresadoResource
     import_template_name = "import.html"
 
-    def get_form(self, request, obj=None, *args, **kwargs):
-        if obj:
-            kwargs['form'] = form.EgresadoEdit
-        # end if
-        return super(EgresadoAdmin, self).get_form(request, obj, *args, **kwargs)
-    # end def
 
     class Media:
         css = {
@@ -111,13 +105,6 @@ class EmpleadorAdmin(admin.ModelAdmin):
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">work</i>'
     form = form.EmpleadorForm
-
-    def get_form(self, request, obj=None, *args, **kwargs):
-        if obj:
-            kwargs['form'] = form.EmpleadorFormEdit
-        # end if
-        return super(EmpleadorAdmin, self).get_form(request, obj, *args, **kwargs)
-    # end def
 # end class
 
 
