@@ -47,8 +47,8 @@ class Diligenciador(User):
 
 class Egresado(Diligenciador):
     identificacion = models.CharField(max_length=100, unique=True )
-    fecha_ingreso = models.DateField()
-    fecha_egreso = models.DateField()
+    fecha_ingreso = models.DateField(blank=True, null=True)
+    fecha_egreso = models.DateField(blank=True, null=True)
     graduado = models.BooleanField(default=True)
 
     class Meta:
