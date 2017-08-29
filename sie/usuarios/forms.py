@@ -136,12 +136,14 @@ class EmpleadorForm(forms.ModelForm):
             user = User.objects.filter(username=nit).first()
             egresado = usuarios.Empleador.objects.filter(nit=nit).first()
             if hasattr(self, 'instance') and self.instance.pk:
-                if user.id != self.instance.id:
-                    raise forms.ValidationError('Ya existe un usuario con este username')
-                # end if
-                if egresado != self.instance:
-                    raise forms.ValidationError('Ya existe un usuario con este nit')
-                # end if
+                if user:
+                    if user.id != self.instance.id:
+                        raise forms.ValidationError('Ya existe un usuario con este username')
+                    # end if
+                if egresado:
+                    if egresado != self.instance:
+                        raise forms.ValidationError('Ya existe un usuario con este nit')
+                    # end if
                 return nit
             else:
                 if user:
