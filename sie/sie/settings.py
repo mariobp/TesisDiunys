@@ -95,10 +95,10 @@ WSGI_APPLICATION = 'sie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'diu',
-        'USER': 'postgres',
-        'PASSWORD': 'Exile*74522547',
-        'HOST': '104.236.33.228',
+        'NAME': 'bdsie',
+        'USER': 'user_sie',
+        'PASSWORD': 'sie_2017',
+        'HOST': 'siebd.sie.seedprojects.org',
         'POST': '5432'
     },
     'default2': {
@@ -149,3 +149,45 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+ADMINS = [('Mario', 'mariobarrpach@gmail.com'), ]
+
+
+DJANGO_LOG_LEVEL = DEBUG
+# Logging
+LOGGING = {
+ 'version': 1,
+ 'disable_existing_loggers': False,
+ 'formatters': {
+     'verbose': {
+         'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+     },
+     'simple': {
+         'format': '%(levelname)s %(message)s'
+     },
+ },
+ 'handlers': {
+     'console': {
+         'level': 'INFO',
+         'class': 'logging.StreamHandler',
+         'formatter': 'simple'
+     },
+     'mail_admins': {
+         'level': 'ERROR',
+         'class': 'django.utils.log.AdminEmailHandler',
+     }
+ },
+ 'loggers': {
+     'django': {
+         'handlers': ['console'],
+         'propagate': True,
+         'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+     },
+     'django.request': {
+         'handlers': ['mail_admins'],
+         'level': 'ERROR',
+         'propagate': True,
+     }
+ }
+}
