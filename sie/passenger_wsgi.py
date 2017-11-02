@@ -13,7 +13,5 @@ sys.path.insert(0, "/home/ftp_sie/.virtualenvs/diu/lib/python2.7/site-packages/d
 sys.path.insert(0, "/home/ftp_sie/.virtualenvs/diu/lib/python2.7/site-packages")
 os.environ['DJANGO_SETTINGS_MODULE'] = 'sie.settings'
 
-from django_fastcgi.servers.fastcgi import runfastcgi
-from django.core.servers.basehttp import get_internal_wsgi_application
-wsgi_application = get_internal_wsgi_application()
-runfastcgi(wsgi_application, method="prefork", daemonize="false", minspare=1, maxspare=1, maxchildren=1)
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
