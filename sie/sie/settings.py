@@ -94,12 +94,15 @@ WSGI_APPLICATION = 'sie.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.mysqlg',
         'NAME': 'bdsie',
         'USER': 'user_sie',
         'PASSWORD': 'sie_2017',
         'HOST': 'siebd.sie.seedprojects.org',
-        'POST': ''
+        'POST': '',
+        'OPTIONS': {
+           'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     },
     'default2': {
         'ENGINE': 'django.db.backends.sqlite3',
