@@ -88,9 +88,10 @@ class EgresadoForm(forms.ModelForm):
             user = User.objects.filter(username=identificacion).first()
             egresado = usuarios.Egresado.objects.filter(identificacion=identificacion).first()
             if hasattr(self, 'instance') and self.instance.pk:
-                if user.id != self.instance.id:
-                    raise forms.ValidationError('Ya existe un usuario con este username')
-                # end if
+                if user:
+                    if user.id != self.instance.id:
+                        raise forms.ValidationError('Ya existe un usuario con este username')
+                    # end if
                 if egresado != self.instance:
                     raise forms.ValidationError('Ya existe un usuario con esta identificación')
                 # end if
