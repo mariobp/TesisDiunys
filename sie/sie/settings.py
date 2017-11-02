@@ -155,7 +155,8 @@ MEDIA_ROOT = '/home/ftp_sie/sie.seedprojects.org/media/'
 
 
 ADMINS = [('Mario', 'mariobarrpach@gmail.com'), ]
-
+SERVER_EMAIL = 'mariobarrpach@gmail.com'
+DEFAULT_FROM_EMAIL = "egresadosprosistemas@gmail.com"
 
 DJANGO_LOG_LEVEL = DEBUG
 # Logging

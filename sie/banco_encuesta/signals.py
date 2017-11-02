@@ -23,7 +23,7 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
             # end for
         # end if
         if len(emails) is not 0:
-            subject, from_email, to = "Encuesta", 'mariobarrios@gmail.com', emails
+            subject, from_email, to = "Encuesta", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
                 <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para
@@ -31,7 +31,7 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
                 Sistemas de la Universidad de Cartagena”.</p>
 
                 <p>Encontraras una encuesta, donde deberás aceptar los términos.
-                http://104.236.33.228:7777</p>
+                http://sie.seedprojects.org</p>
 
                 <ul>
                     <li>
@@ -65,7 +65,7 @@ def enviarCorreoEmpleador(sender, instance, **kwargs):
         # end for
 
         if len(emails) is not 0:
-            subject, from_email, to = "Encuesta académica Universidad de Cartagena", 'mariobarrios@gmail.com', emails
+            subject, from_email, to = "Encuesta académica Universidad de Cartagena", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
                 <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para
@@ -73,7 +73,7 @@ def enviarCorreoEmpleador(sender, instance, **kwargs):
                 Sistemas de la Universidad de Cartagena”.</p>
 
                 <p>Encontraras una encuesta, donde deberás aceptar los términos.
-                http://104.236.33.228:7777</p>
+                http://sie.seedprojects.org</p>
 
                 <ul>
                     <li>
