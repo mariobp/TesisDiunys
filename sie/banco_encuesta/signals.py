@@ -26,21 +26,21 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
             subject, from_email, to = "Encuesta", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
-                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para
-                apoyar los medios de participación del egresado del programa de Ingeniería de
-                Sistemas de la Universidad de Cartagena”.</p>
+                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para apoyar los medios de
+                participación del egresado del programa de Ingeniería de Sistemas de la Universidad de Cartagena”.</p>
 
-                <p>Encontraras una encuesta, donde deberás aceptar los términos.
-                http://sie.seedprojects.org</p>
-
+                <p>A través del link. <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
+                <p>Ingresando con:</p>
                 <ul>
                     <li>
-                       Usuario: cedula de identificación
+                       Usuario: CEDULA DE IDENTIFICACION sin espacios o puntos.
                     </li>
                     <li>
-                       Contraseña: cedula de identificación
+                       Contraseña: CEDULA DE IDENTIFICACION sin espacios o puntos.
                     </li>
                 </ul>
+
+                <p>Al ingresar debes aceptar los términos, y contestar la encuesta de la manera más objetiva posible.</p>
 
                 <p>Con esta información apoyaras al fortalecimiento de las relaciones
                 de los egresados y empleadores con el Programa y la participación
@@ -68,21 +68,21 @@ def enviarCorreoEmpleador(sender, instance, **kwargs):
             subject, from_email, to = "Encuesta académica Universidad de Cartagena", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
-                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para
-                apoyar los medios de participación del egresado del programa de Ingeniería de
-                Sistemas de la Universidad de Cartagena”.</p>
+                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para apoyar los medios de
+                participación del egresado del programa de Ingeniería de Sistemas de la Universidad de Cartagena”.</p>
 
-                <p>Encontraras una encuesta, donde deberás aceptar los términos.
-                http://sie.seedprojects.org</p>
-
+                <p>A través del link. <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
+                <p>Ingresando con:</p>
                 <ul>
                     <li>
-                       Usuario: cedula de identificación
+                       Usuario: NIT de la empresa que representas sin guiones, espacios o puntos.
                     </li>
                     <li>
-                       Contraseña: cedula de identificación
+                       Contraseña: NIT de la empresa que representas sin guiones, espacios o puntos.
                     </li>
                 </ul>
+
+                <p>Al ingresar debes aceptar los términos, y contestar la encuesta de la manera más objetiva posible.</p>
 
                 <p>Con esta información apoyaras al fortalecimiento de las relaciones
                 de los egresados y empleadores con el Programa y la participación
