@@ -99,7 +99,7 @@ DATABASES = {
         'USER': 'user_sie',
         'PASSWORD': 'sie_2017',
         'HOST': 'siebd.sie.seedprojects.org',
-        'POST': '5432'
+        'POST': ''
     },
     'default2': {
         'ENGINE': 'django.db.backends.sqlite3',
