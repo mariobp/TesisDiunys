@@ -154,7 +154,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/home/ftp_sie/sie.seedprojects.org/media/'
 
 
-ADMINS = [('Mario', 'mariobarrpach@gmail.com'), ]
+ADMINS = [('Mario', 'mariobarrpach@gmail.com'), ('Diunys', 'diza0602@gmail.com')]
 SERVER_EMAIL = 'mariobarrpach@gmail.com'
 DEFAULT_FROM_EMAIL = "egresadosprosistemas@gmail.com"
 
