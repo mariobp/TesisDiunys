@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'sie.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bdsie',
         'USER': 'user_sie',
         'PASSWORD': 'sie_2017',
