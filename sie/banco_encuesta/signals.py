@@ -26,25 +26,24 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
             subject, from_email, to = "Encuesta", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
-                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para apoyar los medios de
-                participación del egresado del programa de Ingeniería de Sistemas de la Universidad de Cartagena”.</p>
+                <p>Estimados,</p>
+                <p>Te invitamos a ser parte de esta herramienta informática con el objetivo de apoyar los medios de participación del 
+                egresado del programa Ingeniería de Sistemas de la Universidad de Cartagena en los procesos de autoevaluación, oferta 
+                académica de educación continua y posgrado.</p>
 
-                <p>A través del link. <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
+                <p>A través del link: <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
                 <p>Ingresando con:</p>
                 <ul>
                     <li>
-                       Usuario: CEDULA DE IDENTIFICACION sin espacios o puntos.
+                       Usuario: Cedula de Ciudadanía sin guiones, espacios o puntos.
                     </li>
                     <li>
-                       Contraseña: CEDULA DE IDENTIFICACION sin espacios o puntos.
+                       Contraseña: Cedula de Ciudadanía sin guiones, espacios o puntos.
                     </li>
                 </ul>
 
                 <p>Al ingresar debes aceptar los términos, y contestar la encuesta de la manera más objetiva posible.</p>
 
-                <p>Con esta información apoyaras al fortalecimiento de las relaciones
-                de los egresados y empleadores con el Programa y la participación
-                de los mismos en los procesos de autoevaluación y mejoramiento continuo.</p>
                 <p>¡Gracias!</p>
             """
             msg = EmailMultiAlternatives(subject, text_content, from_email, to)
@@ -68,25 +67,24 @@ def enviarCorreoEmpleador(sender, instance, **kwargs):
             subject, from_email, to = "Encuesta académica Universidad de Cartagena", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
             html_content = """
-                <p>Te invitamos a participar en el proyecto de grado “Herramienta informática para apoyar los medios de
-                participación del egresado del programa de Ingeniería de Sistemas de la Universidad de Cartagena”.</p>
+                <p>Estimados,</p>
+                <p>Te invitamos a ser parte de esta herramienta informática con el objetivo de apoyar los medios de 
+                participación del egresado del programa Ingeniería de Sistemas de la Universidad de Cartagena en 
+                los procesos de autoevaluación, oferta académica de educación continua y posgrado. </p>
 
-                <p>A través del link. <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
+                <p>A través del link: <a href="http://sie.seedprojects.org" target="_blank">sie.seedprojects.org</a></p>
                 <p>Ingresando con:</p>
                 <ul>
                     <li>
                        Usuario: NIT de la empresa que representas sin guiones, espacios o puntos.
                     </li>
                     <li>
-                       Contraseña: NIT de la empresa que representas sin guiones, espacios o puntos.
+                       Contraseña: NIT de la empresa que representas sin guiones, espacios o puntos. 
                     </li>
                 </ul>
 
                 <p>Al ingresar debes aceptar los términos, y contestar la encuesta de la manera más objetiva posible.</p>
 
-                <p>Con esta información apoyaras al fortalecimiento de las relaciones
-                de los egresados y empleadores con el Programa y la participación
-                de los mismos en los procesos de autoevaluación y mejoramiento continuo.</p>
                 <p>¡Gracias!</p>
             """
             msg = EmailMultiAlternatives(subject, text_content, from_email, to)
