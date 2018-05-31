@@ -40,7 +40,7 @@ EMAIL_HOST_PASSWORD = 'omyjgsmdtlkolyjg'
 
 INSTALLED_APPS = [
     'custom',
-    'material.theme.yellow',
+    'material.theme.bluegrey',
     'material',
     'material.admin',
     'django.contrib.admin',
