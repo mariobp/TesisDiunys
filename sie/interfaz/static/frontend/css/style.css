@@ -130,7 +130,7 @@ breadcrumbs
 .breadcrumb__step--active::before {
   color: var(--breadcrumb-theme-1);
 }
-.social ul li a span {
+.social span {
     position: absolute;
     padding-left: 5px;
 }
@@ -145,4 +145,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
 }
 .dropdown-content li>a, .dropdown-content li>span {
     color: #fdd835 !important;
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #fdd835 !important;
 }
