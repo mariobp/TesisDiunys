@@ -7,13 +7,18 @@ from import_export.admin import  ImportMixin, ImportExportModelAdmin
 from import_export import resources, widgets
 from django.contrib.auth.models import User
 import forms as form
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
+
+admin.site.unregister(User)
+admin.site.unregister(Group)
 # Register your models here.
 
 
 @admin.register(usuarios.Director)
 class DirectorAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',
-                    'cargo', 'fecha_nacimiento')
+                    'cargo',)
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">person</i>'
@@ -30,7 +35,7 @@ class DirectorAdmin(admin.ModelAdmin):
 
 @admin.register(usuarios.Administrador)
 class AdministradorAdmin(admin.ModelAdmin):
-    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email', 'fecha_nacimiento')
+    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',)
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">person_outline</i>'
@@ -99,8 +104,8 @@ class EgresadoAdmin(ImportMixin, admin.ModelAdmin):
 
 @admin.register(usuarios.Empleador)
 class EmpleadorAdmin(admin.ModelAdmin):
-    list_display = ('username', 'first_name', 'last_name', 'identificacion', 'email',
-                    'empresa', 'nit', 'cargo', 'fecha_nacimiento')
+    list_display = ('username', 'identificacion', 'email',
+                    'empresa', 'nit', 'cargo')
     search_fields = ('username', 'email', 'first_name',
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">work</i>'
@@ -108,11 +113,11 @@ class EmpleadorAdmin(admin.ModelAdmin):
 # end class
 
 
-@admin.register(usuarios.GrupoPeriodo)
-class GrupoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'fecha')
-    search_fields = ('nombre',)
-    filter_horizontal = ('egresados',)
-    list_filter = ('fecha',)
-    icon = '<i class="material-icons">group</i>'
-# end class
+# @admin.register(usuarios.GrupoPeriodo)
+# class GrupoAdmin(admin.ModelAdmin):
+#     list_display = ('nombre', 'fecha')
+#     search_fields = ('nombre',)
+#     filter_horizontal = ('egresados',)
+#     list_filter = ('fecha',)
+#     icon = '<i class="material-icons">group</i>'
+# # end class

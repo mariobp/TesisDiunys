@@ -161,8 +161,8 @@ class EmpleadorForm(forms.ModelForm):
 
     def save(self, commit=False):
         usuario = super(EmpleadorForm, self).save(commit)
-        usuario.username = usuario.nit
-        usuario.set_password(raw_password=usuario.nit)
+        usuario.username = usuario.email
+        usuario.set_password(raw_password=usuario.email)
         usuario.save()
         return usuario
     # end def

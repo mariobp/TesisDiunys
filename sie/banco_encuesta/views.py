@@ -5,7 +5,7 @@ from django.shortcuts import render
 from supra import views as supra
 from django.db.models import Q
 import models
-from encuesta.models import Instrumento, Opcion
+from encuesta.models import Instrumento, Opcion, Cerrada
 import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -134,11 +134,10 @@ def dataPie(request, id):
     instru = Instrumento.objects.filter(id=id).first()
     if instru:
         preguntas = []
-        for pregunta in instru.preguntas.all():
+        for pregunta in Cerrada.objects.filter(instrumento=instru):
             respuestas = []
             respuestas.append(["Opciones", "Numero de respuestas"])
-            opciones = Opcion.objects.filter(pregunta=pregunta.id)
-            for o in opciones:
+            for o in pregunta.opciones.all():
                 respuesta = models.Cerrada.objects.filter(pregunta=pregunta, respuestas__id=o.id).count()
                 respuestas.append([o.texto, respuesta])
             # end for

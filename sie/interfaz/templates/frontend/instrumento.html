@@ -72,12 +72,12 @@
             <br>
             <input type="hidden" name="master-[[pregunta.id]]" ng-model="respuestas[p].pregunta" ng-init="respuestas[p].pregunta = pregunta.id">
             <p ng-repeat="opcion in pregunta.opciones.object_list" ng-if="!pregunta.multiple">
-                <input class="with-gap" type="radio" name="radio-[[pregunta.id]]" ng-value="[[opcion]]" ng-model="respuestas[p].opciones" id="radio-[[opcion.id]]">
-                <label for="radio-[[opcion.id]]">[[opcion.texto]]</label>
+                <input class="with-gap" type="radio" name="radio-[[pregunta.id]]" ng-value="[[opcion]]" ng-model="respuestas[p].opciones" id="radio-[[opcion.id]]-[[pregunta.id]]">
+                <label for="radio-[[opcion.id]]-[[pregunta.id]]">[[opcion.texto]]</label>
             </p>
             <p ng-repeat="opcion in pregunta.opciones.object_list" ng-if="pregunta.multiple">
-                <input class="validate" type="checkbox" name="check-[[opcion.id]]" ng-init="respuestas[p].opciones = []" ng-model="respuestas[p].opciones[$index]" ng-true-value="[[opcion]]" class="filled-in" id="check-[[opcion.id]]">
-                <label for="check-[[opcion.id]]">[[opcion.texto]]</label>
+                <input class="validate" type="checkbox" name="check-[[opcion.id]]" ng-init="respuestas[p].opciones = []" ng-model="respuestas[p].opciones[$index]" ng-true-value="[[opcion]]" class="filled-in" id="check-[[opcion.id]]-[[pregunta.id]]">
+                <label for="check-[[opcion.id]]-[[pregunta.id]]">[[opcion.texto]]</label>
             </p>
             <br>
             <div ng-hide="valid[p]" ng-init="valid[p] = true">

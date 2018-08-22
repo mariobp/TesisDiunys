@@ -19,7 +19,7 @@ class AsignarEncuesta(models.Model):
 
 class AsignarEncuestaEgresado(AsignarEncuesta):
     egresados = models.ManyToManyField(usuarios.Egresado, blank=True)
-    grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
+    # grupo = models.ForeignKey(usuarios.GrupoPeriodo, blank=True, null=True)
 
     class Meta:
         verbose_name = "Asignación encuesta a egresado"

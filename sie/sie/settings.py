@@ -93,18 +93,18 @@ WSGI_APPLICATION = 'sie.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
+    # 'default2': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'bdsie',
+    #     'USER': 'user_sie',
+    #     'PASSWORD': 'sie_2017',
+    #     'HOST': 'siebd.sie.seedprojects.org',
+    #     'POST': '',
+    #     'OPTIONS': {
+    #        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     }
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bdsie',
-        'USER': 'user_sie',
-        'PASSWORD': 'sie_2017',
-        'HOST': 'siebd.sie.seedprojects.org',
-        'POST': '',
-        'OPTIONS': {
-           'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    },
-    'default2': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -148,11 +148,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ftp_sie/sie.seedprojects.org/static/'
+# STATIC_ROOT = '/home/ftp_sie/sie.seedprojects.org/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/ftp_sie/sie.seedprojects.org/media/'
-
+# MEDIA_ROOT = '/home/ftp_sie/sie.seedprojects.org/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 ADMINS = [('Mario', 'mariobarrpach@gmail.com'), ('Diunys', 'diza0602@gmail.com')]
 SERVER_EMAIL = 'mariobarrpach@gmail.com'

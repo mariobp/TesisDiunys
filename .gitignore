@@ -20,7 +20,7 @@ lib64/
 parts/
 sdist/
 var/
-.pyc
+*.pyc
 *.egg-info/
 .installed.cfg
 *.egg

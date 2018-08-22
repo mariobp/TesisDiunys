@@ -77,7 +77,7 @@ class GrupoPeriodo(models.Model):
 class Empleador(Diligenciador):
     identificacion = models.CharField(max_length=100, blank=True, null=True)
     empresa = models.CharField("Nombre empresa", max_length=100)
-    nit = models.CharField(max_length=100, unique=True)
+    nit = models.CharField(max_length=100, blank=True, null=True)
     cargo = models.CharField(max_length=100)
 
     class Meta:

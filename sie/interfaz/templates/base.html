@@ -34,7 +34,7 @@
             <li><a href="/dashboard/">Administración</a></li>
             {% endif %}
             <li><a href="/">Encuestas</a></li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Perfil<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{% if user.first_name  %} {{ user.first_name }} {{ user.last_name }} {% else %} Perfil {% endif %}<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
           <ul class="side-nav collapsible" id="mobile-demo">
             {% if user.is_authenticated and user.is_superuser %}
