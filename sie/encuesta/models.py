@@ -53,7 +53,7 @@ class Instrumento(models.Model):
     # end class
 
     def descargar_datos(self):
-        return '<a href="/banco/export/xls/%d/">Exportar Datos</a>' % (self.pk)
+        return '<a target="_blank" href="/encuesta/imprimir/%d/">Exportar Datos</a>' % (self.pk)
     # end def
 
     descargar_datos.allow_tags = True

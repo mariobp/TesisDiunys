@@ -51,3 +51,7 @@ class InstrumentoSupraList(supra.SupraListView):
         return super(InstrumentoSupraList, self).dispatch(request, *args, **kwargs)
     # end def
 # end class
+
+
+def estadisticas(request, id):
+    return render(request, 'encuesta/imprimir_encuesta.html', { "id": id })

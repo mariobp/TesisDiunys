@@ -1,11 +1,15 @@
 $(document).ready(function() {
-  $("body").append("<div class='modal'><div class='modal-content'><h4 class='center'>Estadisticas</h4></div></div>");
+$("body").append(`
+  <div class='modal'>
+    <div id='content' class='modal-content'>
+      <h4 class='center'>Estadisticas</h4>
+    </div>
+  </div>`);
   $('.modal').modal();
 
 });
 
 function data(id) {
-  console.log(id);
   $.ajax({
     url: '/banco/data/'+ id + '/',
     type: 'GET',
@@ -26,7 +30,6 @@ function data(id) {
     $('.modal').modal('open');
   })
   .fail(function(response) {
-    console.log(response);
     alert("Ha ocurrido un error");
   })
   .always(function() {
@@ -49,5 +52,15 @@ function pie(datos, id){
     var chart = new google.visualization.PieChart(document.getElementById(id));
 
     chart.draw(data, options);
+  }
+
+  function printPage() {
+    var prtContent = document.getElementById("content");
+    var WinPrint = window.open('', 'Estadisticas', 'top=0,width=800,height=900');
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close()
   }
 }

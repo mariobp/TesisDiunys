@@ -93,7 +93,7 @@ def exporExel(request, id):
         # Sheet header, first row
         row_num = 0
         columns = []
-        for index, pregunta in enumerate(instru.preguntas.all()):
+        for index, pregunta in enumerate(Cerrada.objects.filter(instrumento=instru)):
             font_style = xlwt.XFStyle()
             font_style.font.bold = True
             ws.write(row_num, 0, pregunta.enunciado, font_style)

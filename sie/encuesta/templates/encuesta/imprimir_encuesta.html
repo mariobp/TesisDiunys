@@ -1,0 +1,98 @@
+{% extends 'base.html' %} 
+{% block css %}
+    <style>
+        html, body{
+            width: 100%;
+        }
+        .save{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        @media print {
+            .print { display:block; }
+        }
+    </style>
+{% endblock %} 
+{% block body %}
+<div class="row">
+    <div class="col s12">
+        <div class="save">
+            <button class="btn waves-effect waves-light yellow darken-2 center" type="submit" onclick="printPage();" name="action">Guardar como pdf
+                <i class="material-icons right">save</i>
+                </button>
+        </div>
+        <div id="content" class="modal-content print">
+
+        </div>
+    </div>
+</div>
+{% block script %} 
+<script src="/static/banco/js/loader.js"></script>
+<script>
+    $(document).ready(function () {
+        data({{id}});
+    });
+
+    function data(id) {
+        $.ajax({
+            url: '/banco/data/' + id + '/',
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function (response) {
+            var data = response;
+            $(".modal-content").html('');
+            $(".modal-content").append('<h5 class="center">' + data.nombre + '</h5>')
+                .append('<p>' + data.descripcion + '</p>')
+                .append('<div class="row"></div>');
+            var query = "";
+            data.preguntas.forEach(function (element, index) {
+                $(".modal-content .row").append('<div class="col s12" id="piechart' + index + '" style="height: 500px;"></div>');
+                query = "piechart" + index;
+                pie(element, query);
+            });
+            $('.modal').modal('open');
+        })
+        .fail(function (response) {
+            alert("Ha ocurrido un error");
+        })
+        .always(function () {
+            console.log("complete");
+        });
+    }
+
+    function pie(datos, id) {
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(datos.respuestas);
+
+            var options = {
+                title: datos.pregunta
+            };
+            
+            var chart_div = document.getElementById(id)
+            var chart = new google.visualization.PieChart(chart_div);
+            google.visualization.events.addListener(chart, 'ready', function () {
+                chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+                console.log(chart_div.innerHTML);
+            });
+            chart.draw(data, options);
+        }
+    }
+
+    function printPage() {
+        var prtContent = document.getElementById("content");
+        var WinPrint = window.open('', 'Estadisticas', 'width=900,height=900');
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close()
+    }
+</script>
+{% endblock %} 
+{% endblock %}
