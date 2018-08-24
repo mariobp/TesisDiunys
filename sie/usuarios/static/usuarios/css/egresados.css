@@ -1,5 +1,10 @@
 .import{
-    width: 49%;
+    margin-bottom: 3px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
 }
 
 div.breadcrumbs{
