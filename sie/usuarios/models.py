@@ -46,10 +46,14 @@ class Diligenciador(User):
 
 
 class Egresado(Diligenciador):
+    YES_OR_NOT = (
+        (True, 'Si'),
+        (False, 'No')
+    )
     identificacion = models.CharField(max_length=100, unique=True )
     fecha_ingreso = models.DateField(blank=True, null=True)
     fecha_egreso = models.DateField(blank=True, null=True)
-    graduado = models.BooleanField(default=True)
+    graduado = models.BooleanField(default=True, choices=YES_OR_NOT)
 
     class Meta:
         verbose_name = "Egresado"

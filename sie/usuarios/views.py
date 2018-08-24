@@ -11,8 +11,9 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from models import Diligenciador
+from models import Diligenciador, Egresado
 from forms import DiligenciadorForm
+import xlwt
 import json as simplejson
 supra.SupraConf.body = True
 
@@ -77,3 +78,36 @@ def change_password(request):
     return render(request, 'usuarios/change_password.html', {
         'form': form
     })
+
+
+def export_egresados(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="egresados.xls"'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Egresados')
+    # Sheet header, first row
+    row_num = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+    columns = ['Nombre', 'Apellidos', 'Identificación', 'Fecha de Nacimiento', 'Correo', 'Celular', 'Fecha Ingreso', 'Fecha Egreso', 'Graduado']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Egresado.objects.all().values_list('first_name', 'last_name', 'identificacion', 'fecha_nacimiento', 'email', 'celular', 'fecha_ingreso', 'fecha_egreso', 'graduado')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            if col_num == 8:
+                val = 'Si' if row[col_num] else 'No'
+                ws.write(row_num, col_num, val, font_style)
+            else:
+                ws.write(row_num, col_num, row[col_num], font_style)
+    
+    wb.save(response)
+    return response
+    # end if
+# end def

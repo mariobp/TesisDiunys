@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^password/$', views.change_password, name='change_password'),
     url(r'^diligenciador/edit/(?P<pk>\d+)/$',
         views.DiligenciadorSupraForm.as_view(), name="diligenciador"),
+    url(r'^export/xls/$', views.export_egresados, name='export_egresados'),
 ]
