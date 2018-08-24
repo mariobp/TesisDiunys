@@ -121,7 +121,7 @@ def enviarCorreoEmpleador(sender, instance, **kwargs):
             """
             msg = EmailMultiAlternatives(subject, text_content, from_email, to)
             msg.attach_alternative(unicode(html_content, encoding='utf-8'), "text/html")
-            msg.attach_file('')
+            msg.attach_file('media/Empleadores.pdf')
             msg.send()
         # end if
     # end if
