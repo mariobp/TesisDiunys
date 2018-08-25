@@ -31,7 +31,7 @@ class Administrador(User):
 
 class Diligenciador(User):
     fecha_nacimiento = models.DateField(blank=True, null=True)
-    celular = models.CharField(max_length=10, blank=True, null=True)
+    celular = models.CharField(blank=True, null=True)
     direccion = models.CharField("Dirección", max_length=100, blank=True, null=True)
 
     class Meta:
