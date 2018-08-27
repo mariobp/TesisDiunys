@@ -134,7 +134,7 @@ def dataPie(request, id):
     instru = Instrumento.objects.filter(id=id).first()
     if instru:
         preguntas = []
-        for pregunta in Cerrada.objects.filter(instrumento=instru):
+        for pregunta in Cerrada.objects.filter(instrumento=instru).order_by('numero'):
             respuestas = []
             respuestas.append(["Opciones", "Numero de respuestas"])
             for o in pregunta.opciones.all():
@@ -145,7 +145,7 @@ def dataPie(request, id):
                 otros = models.Otros.objects.filter(pregunta=pregunta).count()
                 respuestas.append(['Otros', otros])
             # end if
-            preguntas.append({"pregunta": pregunta.enunciado, "respuestas": respuestas})
+            preguntas.append({"pregunta": pregunta.enunciado, "numero": pregunta.numero ,"respuestas": respuestas})
         # end for
         data = {"nombre": instru.nombre, "descripcion": instru.descripcion, "preguntas": preguntas}
         return HttpResponse(json.dumps(data), 200)

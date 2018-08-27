@@ -102,7 +102,7 @@ class Opcion(models.Model):
     texto = models.CharField(max_length=100)
 
     class Meta:
-        verbose_name = "Opcion"
+        verbose_name = "Opción"
         verbose_name_plural = "Opciones"
     # end class
 

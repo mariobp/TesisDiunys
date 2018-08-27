@@ -46,7 +46,7 @@ function pie(datos, id){
     var data = google.visualization.arrayToDataTable(datos.respuestas);
 
     var options = {
-      title: datos.pregunta
+      title: datos.numero + ') '+ datos.pregunta,
     };
 
     var chart = new google.visualization.PieChart(document.getElementById(id));

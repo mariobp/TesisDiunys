@@ -17,11 +17,7 @@ def enviarCorreoEgresados(sender, instance, **kwargs):
         for e in asignacion.egresados.all():
             emails.append(e.email)
         # end for
-        if asignacion.grupo:
-            for g in asignacion.grupo.egresados.all():
-                emails.append(g.email)
-            # end for
-        # end if
+        
         if len(emails) is not 0:
             subject, from_email, to = "Encuesta", 'egresadosprosistemas@gmail.com', emails
             text_content = "Encuesta académica"
