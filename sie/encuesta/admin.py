@@ -8,6 +8,12 @@ from encuesta import models as encuesta
 @admin.register(encuesta.Opcion)
 class OpcionStack(admin.ModelAdmin):
     list_display = ('texto',)
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
+    # end class
 # end class
 
 class PreguntaCerradaStack(admin.StackedInline):
@@ -23,5 +29,8 @@ class InstrumentoAdmin(admin.ModelAdmin):
 
     class Media:
         js = ('/static/banco/js/loader.js', '/static/banco/js/index.js')
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
     # end class
 # end class

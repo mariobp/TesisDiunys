@@ -30,6 +30,11 @@ class DirectorAdmin(admin.ModelAdmin):
         # end if
         return super(DirectorAdmin, self).get_form(request, obj, *args, **kwargs)
     # end def
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 
@@ -47,6 +52,11 @@ class AdministradorAdmin(admin.ModelAdmin):
         # end if
         return super(AdministradorAdmin, self).get_form(request, obj, *args, **kwargs)
     # end def
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 
@@ -79,6 +89,10 @@ class EgresadoResource(resources.ModelResource):
         # end for
     # end def
 
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 @admin.register(usuarios.Egresado)
@@ -95,7 +109,7 @@ class EgresadoAdmin(ImportMixin, admin.ModelAdmin):
 
     class Media:
         css = {
-            "all":("usuarios/css/egresados.css",)
+            "all":("usuarios/css/egresados.css", '/static/admin/css/style.css',)
         }
         js = ("usuarios/js/egresados.js",)
     # end class
@@ -110,6 +124,12 @@ class EmpleadorAdmin(admin.ModelAdmin):
                      'last_name', 'identificacion')
     icon = '<i class="material-icons">work</i>'
     form = form.EmpleadorForm
+
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 

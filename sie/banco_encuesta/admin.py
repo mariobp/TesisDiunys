@@ -30,6 +30,11 @@ class FormularioDAdmin(admin.ModelAdmin):
     search_fields = ('asignacion__instrumento__nombre', 'diligenciador__first_name', 'diligenciador__last_name', 'diligenciador__identificacion')
     inlines = [CerradaStack, OtrosStack]
     icon = '<i class="material-icons">assignment_turned_in</i>'
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 
@@ -39,6 +44,11 @@ class AsignacionEgresadoAdmin(admin.ModelAdmin):
     filter_horizontal = ('egresados',)
     form = forms.AsignacionEgresadoForm
     icon = '<i class="material-icons">assignment</i>'
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
 
 
@@ -48,4 +58,9 @@ class AsignacionEmpleadorAdmin(admin.ModelAdmin):
     filter_horizontal = ('empleadores',)
     form = forms.AsignacionEmpleadorForm
     icon = '<i class="material-icons">assignment</i>'
+
+    class Media:
+        css = {
+            "all": ('/static/admin/css/style.css',)
+        }
 # end class
