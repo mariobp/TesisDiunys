@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DjangoModelDependency</ID>
+  <OriginalElement>#sie</OriginalElement>
+  <nodes>
+    <node x="-9.0" y="512.5">banco_encuesta.models.AsignarEncuestaEmpleador</node>
+    <node x="1095.0" y="312.5">banco_encuesta.models.Otros</node>
+    <node x="1972.5" y="268.5">encuesta.models.Cerrada</node>
+    <node x="1361.5" y="334.5">banco_encuesta.models.Respuesta</node>
+    <node x="398.5" y="741.5">django.contrib.contenttypes.models.ContentType</node>
+    <node x="1972.5" y="72.5">encuesta.models.Pregunta</node>
+    <node x="1687.0" y="312.5">banco_encuesta.models.Cerrada</node>
+    <node x="883.0" y="1181.5">django.contrib.auth.models.Group</node>
+    <node x="1372.5" y="1381.5">usuarios.models.Diligenciador</node>
+    <node x="13.0" y="1137.5">usuarios.models.Empleador</node>
+    <node x="835.5" y="712.5">banco_encuesta.models.AsignarEncuestaEgresado</node>
+    <node x="863.5" y="512.5">banco_encuesta.models.AsignarEncuesta</node>
+    <node x="857.5" y="897.5">usuarios.models.Egresado</node>
+    <node x="429.5" y="930.5">django.contrib.auth.models.Permission</node>
+    <node x="1355.0" y="501.5">banco_encuesta.models.FormularioD</node>
+    <node x="1710.5" y="163.5">encuesta.models.Opcion</node>
+    <node x="1977.0" y="530.5">encuesta.models.Instrumento</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="banco_encuesta.models.AsignarEncuestaEgresado" target="usuarios.models.Egresado">
+      <point x="0.0" y="47.5" />
+      <point x="0.0" y="-102.5" />
+    </edge>
+    <edge source="usuarios.models.Egresado" target="django.contrib.auth.models.Permission">
+      <point x="-142.5" y="-0.0" />
+      <point x="130.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.AsignarEncuestaEgresado" target="banco_encuesta.models.AsignarEncuesta">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="banco_encuesta.models.Cerrada" target="encuesta.models.Opcion">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="banco_encuesta.models.Respuesta" target="banco_encuesta.models.FormularioD">
+      <point x="0.0" y="25.5" />
+      <point x="0.0" y="-58.5" />
+    </edge>
+    <edge source="django.contrib.auth.models.Permission" target="django.contrib.contenttypes.models.ContentType">
+      <point x="0.0" y="-69.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="banco_encuesta.models.Otros" target="banco_encuesta.models.FormularioD">
+      <point x="0.0" y="47.5" />
+      <point x="1200.0" y="520.0" />
+      <point x="-125.0" y="-40.0" />
+    </edge>
+    <edge source="usuarios.models.Diligenciador" target="django.contrib.auth.models.Group">
+      <point x="-80.0" y="-58.5" />
+      <point x="1400.0" y="1240.0" />
+      <point x="117.0" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.FormularioD" target="banco_encuesta.models.AsignarEncuesta">
+      <point x="-125.0" y="-0.0" />
+      <point x="136.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.FormularioD" target="usuarios.models.Diligenciador">
+      <point x="0.0" y="58.5" />
+      <point x="0.0" y="-58.5" />
+    </edge>
+    <edge source="encuesta.models.Cerrada" target="encuesta.models.Instrumento">
+      <point x="0.0" y="91.5" />
+      <point x="0.0" y="-69.5" />
+    </edge>
+    <edge source="encuesta.models.Cerrada" target="encuesta.models.Pregunta">
+      <point x="0.0" y="-91.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="banco_encuesta.models.AsignarEncuestaEmpleador" target="banco_encuesta.models.AsignarEncuesta">
+      <point x="169.0" y="-0.0" />
+      <point x="-136.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.Cerrada" target="banco_encuesta.models.Respuesta">
+      <point x="-113.0" y="-0.0" />
+      <point x="118.5" y="-0.0" />
+    </edge>
+    <edge source="usuarios.models.Empleador" target="django.contrib.auth.models.Permission">
+      <point x="40.0" y="-102.5" />
+      <point x="200.0" y="1000.0" />
+      <point x="-130.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.Cerrada" target="encuesta.models.Cerrada">
+      <point x="113.0" y="-0.0" />
+      <point x="-107.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.Otros" target="encuesta.models.Cerrada">
+      <point x="0.0" y="-47.5" />
+      <point x="1200.0" y="0.0" />
+      <point x="2240.0" y="0.0" />
+      <point x="2240.0" y="360.0" />
+      <point x="107.5" y="-0.0" />
+    </edge>
+    <edge source="banco_encuesta.models.Otros" target="banco_encuesta.models.Respuesta">
+      <point x="105.0" y="-0.0" />
+      <point x="-118.5" y="-0.0" />
+    </edge>
+    <edge source="usuarios.models.Empleador" target="usuarios.models.Diligenciador">
+      <point x="0.0" y="102.5" />
+      <point x="160.0" y="1440.0" />
+      <point x="-107.5" y="-0.0" />
+    </edge>
+    <edge source="usuarios.models.Diligenciador" target="django.contrib.auth.models.Permission">
+      <point x="-107.5" y="-40.0" />
+      <point x="560.0" y="1400.0" />
+      <point x="0.0" y="69.5" />
+    </edge>
+    <edge source="banco_encuesta.models.AsignarEncuestaEmpleador" target="usuarios.models.Empleador">
+      <point x="0.0" y="47.5" />
+      <point x="0.0" y="-102.5" />
+    </edge>
+    <edge source="usuarios.models.Egresado" target="usuarios.models.Diligenciador">
+      <point x="142.5" y="-0.0" />
+      <point x="1440.0" y="1000.0" />
+      <point x="-40.0" y="-58.5" />
+    </edge>
+    <edge source="usuarios.models.Empleador" target="django.contrib.auth.models.Group">
+      <point x="147.0" y="-0.0" />
+      <point x="-117.0" y="-0.0" />
+    </edge>
+    <edge source="usuarios.models.Egresado" target="django.contrib.auth.models.Group">
+      <point x="0.0" y="102.5" />
+      <point x="0.0" y="-58.5" />
+    </edge>
+    <edge source="banco_encuesta.models.Cerrada" target="banco_encuesta.models.FormularioD">
+      <point x="0.0" y="47.5" />
+      <point x="1800.0" y="560.0" />
+      <point x="125.0" y="-0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="1720.9999999999995" y="978.9999999999999" />
+  <SelectedNodes>
+    <node>encuesta.models.Instrumento</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+</Diagram>
+
