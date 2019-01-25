@@ -24,7 +24,7 @@ var app = angular.module('myApp', ['ui.materialize', 'ngMessages', 'ngRoute']);
     app.controller('HomeController', function ($scope, $http, $window) {
 
         $scope.terminos = $window.sessionStorage.getItem('terminos');
-        $scope.mensajeConfirmacion = 'En forma voluntaria expreso mi entendimiento sobre el objetivo del presente instrumento de recolección de información, el cual será usada con fines académicos e investigativos por medio del trabajo de grado “Herramienta informática para apoyar los medios de participación del egresado del Programa de Ingeniería de Sistemas de la Universidad de Cartagena”.';
+        $scope.mensajeConfirmacion = 'En forma voluntaria expreso mi entendimiento sobre el objetivo del presente instrumento de recolección de información, el cual será usado con fines académicos e investigativos por medio del trabajo de grado “Herramienta informática para apoyar los medios de participación del egresado del Programa de Ingeniería de Sistemas de la Universidad de Cartagena”.';
         $scope.asignaciones = [];
         $scope.ready = true;
 
