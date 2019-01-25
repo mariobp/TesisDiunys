@@ -9,8 +9,9 @@ from django.contrib.auth.models import User
 import forms as form
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from import_export.formats import base_formats
 
-admin.site.unregister(User)
+# admin.site.unregister(User)
 admin.site.unregister(Group)
 # Register your models here.
 
@@ -78,7 +79,6 @@ class EgresadoResource(resources.ModelResource):
 
     def import_obj(self, obj, data, dry_run):
         identificacion = data.get('identificacion')
-        print "identificacion", identificacion
         for field in self.get_fields():
             if isinstance(field.widget, widgets.ManyToManyWidget):
                 continue
@@ -113,6 +113,16 @@ class EgresadoAdmin(ImportMixin, admin.ModelAdmin):
         }
         js = ("usuarios/js/egresados.js",)
     # end class
+
+    def get_import_formats(self):
+        """
+        Returns available export formats.
+        """
+        formats = (
+                base_formats.XLSX,
+        )
+        return [f for f in formats if f().can_export()]
+
 # end class
 
 

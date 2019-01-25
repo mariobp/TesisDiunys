@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class Director(User):
-    identificacion = models.CharField(max_length=100)
+    identificacion = models.CharField('Identificación',max_length=100)
     cargo = models.CharField(max_length=100)
     fecha_nacimiento = models.DateField()
 
@@ -19,7 +19,7 @@ class Director(User):
 
 
 class Administrador(User):
-    identificacion = models.CharField(max_length=100)
+    identificacion = models.CharField('Identificación', max_length=100)
     fecha_nacimiento = models.DateField()
 
     class Meta:
@@ -50,7 +50,7 @@ class Egresado(Diligenciador):
         (True, 'Si'),
         (False, 'No')
     )
-    identificacion = models.CharField(max_length=100, unique=True )
+    identificacion = models.CharField('Identificación',max_length=100, unique=True )
     fecha_ingreso = models.DateField(blank=True, null=True)
     fecha_egreso = models.DateField(blank=True, null=True)
     graduado = models.BooleanField(default=True, choices=YES_OR_NOT)
@@ -79,7 +79,7 @@ class GrupoPeriodo(models.Model):
 
 
 class Empleador(Diligenciador):
-    identificacion = models.CharField(max_length=100, blank=True, null=True)
+    identificacion = models.CharField('Identificación', max_length=100, blank=True, null=True)
     empresa = models.CharField("Nombre empresa", max_length=100)
     nit = models.CharField(max_length=100, blank=True, null=True)
     cargo = models.CharField(max_length=100)
